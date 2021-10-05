@@ -21,6 +21,7 @@ margin-right: 20px;
 const TitleSpan = styled.span`
 font-size: 14px;
 margin-left: 25px;
+font-weight: 300;
 `
 const FilterDropDownContainer = styled.div`
   cursor: pointer;

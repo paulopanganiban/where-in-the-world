@@ -40,6 +40,9 @@ const StyledInput = styled.input`
   width: inherit;
   background-color: Transparent;
   outline: none;
+  ::placeholder {
+    color: ${({theme}) => theme.text}
+  }
 `;
 const StyledForm = styled.form`
   width: 90%;

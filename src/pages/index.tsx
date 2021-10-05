@@ -6,25 +6,33 @@ import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../styles/themes";
 import { GlobalStyles } from "../styles/global.styles";
 import { useDarkMode } from "../utilities/hooks/darkMode";
-import { getServerSideProps } from "../utilities/data.api";
 
-import DarkModeButton from "../components/darkMode/darkModeButton";
-import DarkModeIcon from "../components/darkMode/darkModeIcon";
 import Header from "../components/header";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
+import TestComponent from "./test";
 
-getServerSideProps();
+// fetch data
+const defaultEndpoint = "https://restcountries.com/v3.1/all";
+export const getServerSideProps = async () => {
+  try {
+    const res = await fetch(defaultEndpoint);
+    const data = await res.json();
+    return { props: {data}}
+  } catch (err) {
+    console.log(err)
+  }
+};
 interface Props {
-  data: {};
+  data: [];
 }
 const Home: NextPage<Props> = ({ data }) => {
+  const [fetchedData] = useState(data)
+  console.log(fetchedData)
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
-  useEffect(() => {
-    console.log(data);
-  }, []);
+  useEffect(() => {}, []);
   if (!mountedComponent) return <div />;
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
@@ -47,6 +55,9 @@ const Home: NextPage<Props> = ({ data }) => {
               <SearchInput />
               <FilterDropDown title={"Filter by Region"} size={"small"} />
             </TopMainContainer>
+            <BottomMainContainer>
+              <TestComponent data={fetchedData} />
+            </BottomMainContainer>
           </MainContainer>
 
           <h1>
@@ -59,6 +70,7 @@ const Home: NextPage<Props> = ({ data }) => {
 };
 
 export default Home;
+const BottomMainContainer = styled.div``;
 const TopMainContainer = styled.div`
   display: flex;
   align-items: center;
