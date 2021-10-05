@@ -3,12 +3,13 @@ import styled from "styled-components";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 interface Props {
     title: string;
+    size:  "small" | "inherit" | "medium" | "large" | undefined;
 }
-const FilterDropDown = ({title}: Props) => {
+const FilterDropDown = ({title, size}: Props) => {
   return (
     <FilterDropDownContainer>
       <TitleSpan>{title}</TitleSpan>
-      <StyledExpandMoreIcon/>
+      <StyledExpandMoreIcon fontSize={size}/>
     </FilterDropDownContainer>
   );
 };

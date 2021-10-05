@@ -45,7 +45,7 @@ const Home: NextPage<Props> = ({ data }) => {
           <MainContainer>
             <TopMainContainer>
               <SearchInput />
-              <FilterDropDown title={'Filter by Region'}/>
+              <FilterDropDown title={"Filter by Region"} size={"small"} />
             </TopMainContainer>
           </MainContainer>
 
@@ -60,8 +60,8 @@ const Home: NextPage<Props> = ({ data }) => {
 
 export default Home;
 const TopMainContainer = styled.div`
-display: flex;
-align-items: center;
-justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 const MainContainer = styled.div``;
