@@ -30,13 +30,12 @@ const SearchInputContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
   width: 480px;
   height: 55px;
-  padding: 10px;
-  margin: 48px 0 48px 80px;
+  margin: 48px 20px 48px 80px;
 `;
 const StyledInput = styled.input`
   caret-color: ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.text};
-  margin-left: 5px;
+  margin-left: 30px;
   border: none;
   width: inherit;
   background-color: Transparent;

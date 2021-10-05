@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../styles/themes";
 import { GlobalStyles } from "../styles/global.styles";
@@ -12,6 +12,7 @@ import DarkModeButton from "../components/darkMode/darkModeButton";
 import DarkModeIcon from "../components/darkMode/darkModeIcon";
 import Header from "../components/header";
 import SearchInput from "../components/searchInput";
+import FilterDropDown from "../components/filterDropDown";
 
 getServerSideProps();
 interface Props {
@@ -42,7 +43,10 @@ const Home: NextPage<Props> = ({ data }) => {
         />
         <main>
           <MainContainer>
-            <SearchInput />
+            <TopMainContainer>
+              <SearchInput />
+              <FilterDropDown />
+            </TopMainContainer>
           </MainContainer>
 
           <h1>
@@ -55,4 +59,9 @@ const Home: NextPage<Props> = ({ data }) => {
 };
 
 export default Home;
+const TopMainContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
+`;
 const MainContainer = styled.div``;
