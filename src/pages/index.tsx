@@ -45,7 +45,7 @@ const Home: NextPage<Props> = ({ data }) => {
           <MainContainer>
             <TopMainContainer>
               <SearchInput />
-              <FilterDropDown />
+              <FilterDropDown title={'Filter by Region'}/>
             </TopMainContainer>
           </MainContainer>
 
