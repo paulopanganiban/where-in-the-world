@@ -2,23 +2,25 @@ import React from "react";
 import Image from "next/image";
 interface Props {
   theme: string | boolean | (() => void);
+  width: number;
+  height: number;
 }
-const DarkModeIcon = ({ theme }: Props) => {
+const DarkModeIcon = ({ theme, width, height }: Props) => {
   return (
     <div>
       {theme === "light" ? (
         <Image
           alt={theme}
           src="/crescent-moon-light.svg"
-          width={24}
-          height={24}
+          width={width}
+          height={height}
         />
       ) : (
         <Image
           src="/crescent-moon-dark.svg"
           alt={"dark"}
-          width={24}
-          height={24}
+          width={width}
+          height={height}
         />
       )}
     </div>

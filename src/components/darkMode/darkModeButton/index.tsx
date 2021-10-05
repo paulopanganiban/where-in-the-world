@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-const DarkModeButton = ({ theme, toggleTheme, Image, buttonLabel }: any) => {
+const DarkModeButton = ({ theme, toggleTheme, buttonLabel }: any) => {
   return (
     <Button theme={theme} onClick={toggleTheme}>
    <p>{buttonLabel}</p>

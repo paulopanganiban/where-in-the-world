@@ -6,7 +6,7 @@
 // - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
 // - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
 // - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
-enum Color { 
+export enum Color { 
     DarkModeBackground = '#333E48',
     DarkModeText = '#FFFFFF',
     DarkModeElements = '#2B3945',
