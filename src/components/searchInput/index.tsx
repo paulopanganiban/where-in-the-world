@@ -6,7 +6,7 @@ const SearchInput = ({}: Props) => {
   return (
     <SearchInputContainer>
       <StyledForm>
-        <SearchIcon />
+        <StyledSearchIcon />
         <StyledInput
           type="text"
           id="fname"
@@ -19,6 +19,9 @@ const SearchInput = ({}: Props) => {
 };
 
 export default SearchInput;
+const StyledSearchIcon = styled(SearchIcon)`
+  margin-left: 32px;
+`;
 const SearchInputContainer = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   display: flex;
@@ -28,10 +31,16 @@ const SearchInputContainer = styled.div`
   width: 480px;
   height: 55px;
   padding: 10px;
+  margin: 48px 0 48px 80px;
 `;
 const StyledInput = styled.input`
+  caret-color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.text};
   margin-left: 5px;
+  border: none;
   width: inherit;
+  background-color: Transparent;
+  outline: none;
 `;
 const StyledForm = styled.form`
   width: 90%;
