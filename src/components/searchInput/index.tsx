@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
-interface Props {}
-const SearchInput = ({}: Props) => {
+import { SearchHandlerProps } from "../../utilities/functions/searchHandler";
+interface Props {
+  term: string;
+//   searchKeyWord?: () => void;
+  
+}
+const SearchInput = ({ term, searchKeyWord }: any) => {
+  const inputElement = useRef<HTMLInputElement>(null);
+  const getSearchTerm = (e: React.FormEvent<HTMLInputElement>) => {
+    const element = e.currentTarget as HTMLInputElement;
+    const value = element.value;
+    searchKeyWord(value);
+  };
   return (
     <SearchInputContainer>
       <StyledForm>
         <StyledSearchIcon />
         <StyledInput
+          ref={inputElement}
           type="text"
-          id="fname"
-          name="firstname"
           placeholder="Search for a country..."
+          value={term}
+          onChange={getSearchTerm}
         />
       </StyledForm>
     </SearchInputContainer>
@@ -41,7 +53,7 @@ const StyledInput = styled.input`
   background-color: Transparent;
   outline: none;
   ::placeholder {
-    color: ${({theme}) => theme.text}
+    color: ${({ theme }) => theme.text};
   }
 `;
 const StyledForm = styled.form`

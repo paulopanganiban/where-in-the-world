@@ -1,18 +1,29 @@
 import React from "react";
-interface Props {
-  data: [];
-}
+import { Props } from ".";
+import Image from "next/image";
 
-const TestComponent = ({ data }: any) => {
-    console.log(data)
-//   console.log(data, "test");
-//   console.log(data.map(item => item.name))
+interface ListProps extends Props {
+  noDataFoundText: string;
+}
+const TestComponent = ({ data, noDataFoundText }: ListProps) => {
+  const renderDataList = data.map(
+    ({ name: { common }, flags: { png } }, index) => (
+      <li key={index}>
+        {common}
+        <Image alt={common} src={png} width={300} height={300} />
+      </li>
+    )
+  );
+
   return (
     <div>
-      {/* {data &&
-        data.map((item, index) => {
-          return (<span key={index}>{item.name}</span>);
-        })} */}
+      <ul>
+        {renderDataList.length > 0 ? (
+          renderDataList
+        ) : (
+          <span>{noDataFoundText}</span>
+        )}
+      </ul>
     </div>
   );
 };

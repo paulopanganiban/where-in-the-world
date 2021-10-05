@@ -11,6 +11,7 @@ import Header from "../components/header";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
 import TestComponent from "./test";
+// import { searchHandler } from "../utilities/functions/searchHandler";
 
 // fetch data
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
@@ -18,20 +19,48 @@ export const getServerSideProps = async () => {
   try {
     const res = await fetch(defaultEndpoint);
     const data = await res.json();
-    return { props: {data}}
+    return { props: { data } };
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
-interface Props {
-  data: [];
+export interface Props {
+  data: [
+    {
+      name: {
+        common: string;
+      };
+      population: number;
+      region: string;
+      capital: [];
+      flags: {
+        png: string;
+      }
+    }
+  ];
 }
 const Home: NextPage<Props> = ({ data }) => {
-  const [fetchedData] = useState(data)
-  console.log(fetchedData)
+  const [fetchedData] = useState(data);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<any>([]);
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
+  const searchHandler = (searchTerm: string) => {
+    setSearchTerm(searchTerm);
+    if (searchTerm !== "") {
+      const newDataList = data.filter((item) => {
+        return Object.values(item)
+          .join(" ")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      });
+      setSearchResults(newDataList);
+      console.log(newDataList);
+    } else {
+      setSearchResults(fetchedData);
+    }
+  };
   useEffect(() => {}, []);
   if (!mountedComponent) return <div />;
   return (
@@ -52,17 +81,18 @@ const Home: NextPage<Props> = ({ data }) => {
         <main>
           <MainContainer>
             <TopMainContainer>
-              <SearchInput />
+              <SearchInput searchKeyWord={searchHandler} term={searchTerm} />
               <FilterDropDown title={"Filter by Region"} size={"small"} />
             </TopMainContainer>
             <BottomMainContainer>
-              <TestComponent data={fetchedData} />
+              {fetchedData && (
+                <TestComponent
+                  data={searchTerm.length < 1 ? fetchedData : searchResults}
+                  noDataFoundText={"No Countries Available"}
+                />
+              )}
             </BottomMainContainer>
           </MainContainer>
-
-          <h1>
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
-          </h1>
         </main>
       </>
     </ThemeProvider>
