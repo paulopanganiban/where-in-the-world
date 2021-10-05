@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-const DarkModeButton = ({ theme, toggleTheme, Icon, buttonLabel }: any) => {
+const DarkModeButton = ({ theme, toggleTheme, Image, buttonLabel }: any) => {
   return (
     <Button theme={theme} onClick={toggleTheme}>
-      <Icon /> <p>{buttonLabel}</p>
+   <p>{buttonLabel}</p>
     </Button>
   );
 };
