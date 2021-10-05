@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-const DarkModeToggler = ({ theme, toggleTheme, Icon, buttonLabel }: any) => {
+const DarkModeButton = ({ theme, toggleTheme, Icon, buttonLabel }: any) => {
   return (
     <Button theme={theme} onClick={toggleTheme}>
       <Icon /> <p>{buttonLabel}</p>
     </Button>
   );
 };
-export default DarkModeToggler;
+export default DarkModeButton;
 const Button = styled.button`
   display: flex;
   align-items: center;
