@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import { useEffect, useState } from "react";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../styles/themes";
 import { GlobalStyles } from "../styles/global.styles";
 import { useDarkMode } from "../utilities/hooks/darkMode";
@@ -10,7 +10,8 @@ import { getServerSideProps } from "../utilities/data.api";
 
 import DarkModeButton from "../components/darkMode/darkModeButton";
 import DarkModeIcon from "../components/darkMode/darkModeIcon";
-import Header from "../components/Header";
+import Header from "../components/header";
+import SearchInput from "../components/searchInput";
 
 getServerSideProps();
 interface Props {
@@ -39,7 +40,7 @@ const Home: NextPage<Props> = ({ data }) => {
         themeMode={themeMode}
         />
         <main>
-       
+        <SearchInput/>
 
           <h1>
             Welcome to <a href="https://nextjs.org">Next.js!</a>
@@ -51,3 +52,5 @@ const Home: NextPage<Props> = ({ data }) => {
 };
 
 export default Home;
+const MainWrapper = styled.div`
+`
