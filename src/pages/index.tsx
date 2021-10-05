@@ -10,7 +10,7 @@ import { useDarkMode } from "../utilities/hooks/darkMode";
 import Brightness3OutlinedIcon from "@mui/icons-material/Brightness3Outlined";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
 import { getServerSideProps } from "../utilities/data.api";
-import DarkModeToggler from "../components/darkModeToggler";
+import DarkModeButton from "../components/darkModeButton";
 
 getServerSideProps()
 interface Props {
@@ -37,7 +37,7 @@ const Home: NextPage<Props> = ({ data }) => {
         </Head>
 
         <main className={styles.main}>
-        <DarkModeToggler
+        <DarkModeButton
               buttonLabel={"Dark"}
               theme={themeMode}
               toggleTheme={themeToggler}
