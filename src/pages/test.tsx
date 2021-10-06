@@ -1,7 +1,7 @@
 import React from "react";
 import { Props } from ".";
 import Image from "next/image";
-
+import Card from '../components/card'
 interface ListProps extends Props {
     
   noDataFoundText: string;
@@ -9,10 +9,11 @@ interface ListProps extends Props {
 const TestComponent = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
     ({ name: { common }, flags: { svg } }, index) => (
-      <li key={index}>
-        {common}
-        <img alt={common} src={svg} width={300} height={300} />
-      </li>
+    //   <li key={index}>
+    //     {common}
+    //     <img alt={common} src={svg} width={300} height={300} />
+        <Card key={index} countryName={common} svg={svg}/>
+    //   </li>
     )
   );
 
