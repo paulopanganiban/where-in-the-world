@@ -42,6 +42,10 @@ const SearchInputContainer = styled.div`
   width: 480px;
   height: 55px;
   margin: 48px 20px 48px 77px;
+  @media all and (max-width: 375px) { 
+ margin: 0;
+ padding: 0;
+}
 `;
 const StyledInput = styled.input`
   caret-color: ${({ theme }) => theme.text};

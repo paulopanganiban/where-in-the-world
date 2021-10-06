@@ -107,11 +107,11 @@ const Home: NextPage<Props> = ({ data }) => {
               )}
             </BottomMainContainer>
           </MainContainer>
-          <Pagination
+          {/* <Pagination
             itemsPerPage={itemsPerPage}
             totalItems={fetchedData.length}
             paginate={paginate}
-          />
+          /> */}
         </Main>
       </>
     </ThemeProvider>
@@ -127,8 +127,10 @@ const BottomMainContainer = styled.div``;
 const TopMainContainer = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 const MainContainer = styled.div`
   max-width: 1440px;
+
 `;
