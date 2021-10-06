@@ -34,8 +34,8 @@ export interface Props {
       region: string;
       capital: [];
       flags: {
-        png: string;
-      }
+        svg: string;
+      };
     }
   ];
 }
@@ -46,7 +46,7 @@ const Home: NextPage<Props> = ({ data }) => {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
-  const searchHandler = (searchTerm: string) => {
+  const searchKeyWordHandler = (searchTerm: string) => {
     setSearchTerm(searchTerm);
     if (searchTerm !== "") {
       const newDataList = data.filter((item) => {
@@ -81,8 +81,8 @@ const Home: NextPage<Props> = ({ data }) => {
         <main>
           <MainContainer>
             <TopMainContainer>
-              <SearchInput searchKeyWord={searchHandler} term={searchTerm} />
-              <FilterDropDown title={"Filter by Region"} size={"small"} />
+              <SearchInput searchKeyWord={searchKeyWordHandler} searchTerm={searchTerm} />
+              <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
             </TopMainContainer>
             <BottomMainContainer>
               {fetchedData && (

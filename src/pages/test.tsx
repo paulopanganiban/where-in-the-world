@@ -3,14 +3,15 @@ import { Props } from ".";
 import Image from "next/image";
 
 interface ListProps extends Props {
+    
   noDataFoundText: string;
 }
 const TestComponent = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
-    ({ name: { common }, flags: { png } }, index) => (
+    ({ name: { common }, flags: { svg } }, index) => (
       <li key={index}>
         {common}
-        <Image alt={common} src={png} width={300} height={300} />
+        <img alt={common} src={svg} width={300} height={300} />
       </li>
     )
   );
