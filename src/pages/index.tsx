@@ -10,9 +10,8 @@ import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
 import Header from "../components/header";
 import List from "../components/list";
-// import { searchHandler } from "../utilities/functions/searchHandler";
+import Pagination from "../components/pagination";
 
-// fetch data
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
 export const getServerSideProps = async () => {
   try {
@@ -40,13 +39,14 @@ export interface Props {
 }
 const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
-  
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<any>([]);
 
+  // Dark Mode State
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
+  // Search Keyword State
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<any>([]);
   const searchKeyWordHandler = (searchTerm: string) => {
     setSearchTerm(searchTerm);
     if (searchTerm !== "") {
@@ -62,7 +62,17 @@ const Home: NextPage<Props> = ({ data }) => {
       setSearchResults(fetchedData);
     }
   };
-  useEffect(() => {}, []);
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const paginate = (pageNumber: number) => {
+    console.log(pageNumber)
+    setCurrentPage(pageNumber)
+  }
   if (!mountedComponent) return <div />;
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
@@ -79,28 +89,40 @@ const Home: NextPage<Props> = ({ data }) => {
           toggleTheme={themeToggler}
           themeMode={themeMode}
         />
-        <main>
+        <Main>
           <MainContainer>
             <TopMainContainer>
-              <SearchInput searchKeyWord={searchKeyWordHandler} searchTerm={searchTerm} />
+              <SearchInput
+                searchKeyWord={searchKeyWordHandler}
+                searchTerm={searchTerm}
+              />
               <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
             </TopMainContainer>
             <BottomMainContainer>
               {fetchedData && (
                 <List
-                  data={searchTerm.length < 1 ? fetchedData : searchResults}
+                  data={searchTerm.length < 1 ? currentItems : searchResults}
                   noDataFoundText={"No Countries Available"}
                 />
               )}
             </BottomMainContainer>
           </MainContainer>
-        </main>
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={fetchedData.length}
+            paginate={paginate}
+          />
+        </Main>
       </>
     </ThemeProvider>
   );
 };
 
 export default Home;
+const Main = styled.main`
+display: flex;
+justify-content: center;
+`
 const BottomMainContainer = styled.div``;
 const TopMainContainer = styled.div`
   display: flex;
@@ -108,5 +130,5 @@ const TopMainContainer = styled.div`
   justify-content: space-between;
 `;
 const MainContainer = styled.div`
-max-width: 1440px;
+  max-width: 1440px;
 `;
