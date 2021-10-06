@@ -1,42 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Test from "./test";
 interface Props {
-    title: string;
-    iconSize:  "small" | "inherit" | "medium" | "large" | undefined;
+  title: string;
+  iconSize: "small" | "inherit" | "medium" | "large" | undefined;
 }
-const FilterDropDown = ({title, iconSize}: Props) => {
+const FilterDropDown = ({ title, iconSize }: Props) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <FilterDropDownContainer>
+    <FilterDropDownContainer  onMouseEnter={() => setOpen(true)} onClick={() => setOpen(!open)}>
       <TitleSpan>{title}</TitleSpan>
-      <StyledExpandMoreIcon fontSize={iconSize}/>
+      <StyledExpandMoreIcon fontSize={iconSize} />
+      {open ? (
+        <DropDownContentContainer onMouseLeave={() => setOpen(false)} onClick={() => setOpen(false)}>
+          <a href="#">Africa</a>
+          <a href="#">America</a>
+          <a href="#">Asia</a>
+          <a href="#">Europe</a>
+          <a href="#">Oceania</a>
+        </DropDownContentContainer>
+      ) : null}
     </FilterDropDownContainer>
   );
 };
 
 export default FilterDropDown;
+const DropDownContentContainer = styled.div`
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: ${({ theme }) => theme.background};
+  width: 200px;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  > a {
+    font-size: 14px;
+    display: block;
+    :hover {
+      border-radius: 5px;
+      background-color: ${({theme}) => theme.body};
+      display: block;
+    }
+  }
+`;
 const StyledExpandMoreIcon = styled(ExpandMoreIcon)`
-margin-right: 20px;
+  margin-right: 20px;
 `;
 const TitleSpan = styled.span`
-font-size: 14px;
-margin-left: 25px;
-font-weight: 300;
-`
+  font-size: 14px;
+  margin-left: 25px;
+  font-weight: 300;
+`;
 const FilterDropDownContainer = styled.div`
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }) => theme.background};
   width: 200px;
   height: 55px;
-  /* margin-right: 77px; */
-  margin: 0px 20px 48px 77px;
-  @media all and (max-width: 375px) { 
- margin: 0;
- padding: 0;
-}
+  margin: 48px 80px 48px 77px;
 `;

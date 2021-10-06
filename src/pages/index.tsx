@@ -89,8 +89,9 @@ const Home: NextPage<Props> = ({ data }) => {
           toggleTheme={themeToggler}
           themeMode={themeMode}
         />
-        <Main>
+        <main>
           <MainContainer>
+            <MainWrapper>
             <TopMainContainer>
               <SearchInput
                 searchKeyWord={searchKeyWordHandler}
@@ -106,31 +107,31 @@ const Home: NextPage<Props> = ({ data }) => {
                 />
               )}
             </BottomMainContainer>
+          </MainWrapper>
           </MainContainer>
           {/* <Pagination
             itemsPerPage={itemsPerPage}
             totalItems={fetchedData.length}
             paginate={paginate}
           /> */}
-        </Main>
+        </main>
       </>
     </ThemeProvider>
   );
 };
 
 export default Home;
-const Main = styled.main`
-display: flex;
-justify-content: center;
-`
 const BottomMainContainer = styled.div``;
 const TopMainContainer = styled.div`
+max-width: 1440px;
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
 `;
 const MainContainer = styled.div`
-  max-width: 1440px;
-
+display: flex;
+justify-content: center;
 `;
+const MainWrapper = styled.div`
+
+`

@@ -3,8 +3,7 @@ import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 interface Props {
   term: string;
-//   searchKeyWord?: () => void;
-  
+  //   searchKeyWord?: () => void;
 }
 const SearchInput = ({ searchTerm, searchKeyWord }: any) => {
   const inputElement = useRef<HTMLInputElement>(null);
@@ -42,10 +41,9 @@ const SearchInputContainer = styled.div`
   width: 480px;
   height: 55px;
   margin: 48px 20px 48px 77px;
-  @media all and (max-width: 375px) { 
- margin: 0;
- padding: 0;
-}
+  @media all and (max-width: 375px) {
+    width: 300px;
+  }
 `;
 const StyledInput = styled.input`
   caret-color: ${({ theme }) => theme.text};

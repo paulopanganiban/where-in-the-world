@@ -35,10 +35,7 @@ const List = ({ data, noDataFoundText }: ListProps) => {
 
 export default List;
 const ListContainer = styled.ul`
+max-width: 1440px;
 display: flex;
 flex-wrap: wrap;
-justify-content: center;
-@media all and (max-width: 375px) { 
- justify-content: center;
-}
-`
+justify-content: center;`
