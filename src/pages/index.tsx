@@ -8,8 +8,8 @@ import { GlobalStyles } from "../styles/global.styles";
 import { useDarkMode } from "../utilities/hooks/darkMode";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
-import TestComponent from "./test";
-import Header from "../components/Header";
+import Header from "../components/header";
+import List from "../components/list";
 // import { searchHandler } from "../utilities/functions/searchHandler";
 
 // fetch data
@@ -87,7 +87,7 @@ const Home: NextPage<Props> = ({ data }) => {
             </TopMainContainer>
             <BottomMainContainer>
               {fetchedData && (
-                <TestComponent
+                <List
                   data={searchTerm.length < 1 ? fetchedData : searchResults}
                   noDataFoundText={"No Countries Available"}
                 />
@@ -107,4 +107,6 @@ const TopMainContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-const MainContainer = styled.div``;
+const MainContainer = styled.div`
+max-width: 1440px;
+`;

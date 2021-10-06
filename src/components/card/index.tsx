@@ -17,7 +17,7 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
     <CardContainer>
       <StyledImage src={svg} />
       <CardContentContainer>
-          <StyledSpan>{countryName}</StyledSpan>
+        <StyledSpan>{countryName}</StyledSpan>
         <StyledTextContainer>
           <StyledTextWrapper>
             <StyledText>Population: </StyledText>
@@ -29,7 +29,7 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
           </StyledTextWrapper>
           <StyledTextWrapper>
             <StyledText>Capital: </StyledText>
-            <StyledText thin={true}>{capital ? capital[0] : 'N/a'}</StyledText>
+            <StyledText thin={true}>{capital ? capital[0] : "N/a"}</StyledText>
           </StyledTextWrapper>
         </StyledTextContainer>
       </CardContentContainer>
@@ -39,8 +39,8 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
 
 export default Card;
 const StyledTextContainer = styled.div`
-margin: 25px 0 0 24px;
-padding: 0;
+  margin: 25px 0 0 24px;
+  padding: 0;
 `;
 const StyledTextWrapper = styled.div`
   display: flex;
@@ -59,15 +59,18 @@ const StyledSpan = styled.span`
   margin: 25px 0 0 24px;
 `;
 const CardContainer = styled.div`
+  margin: 0px 38px 38px 38px;
   background-color: ${({ theme }) => theme.background};
   width: 265px;
   height: 335px;
   border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 `;
 const StyledImage = styled.img`
   height: 161px;
   width: 100%;
   object-fit: cover;
+  border-radius: 5px 5px 0 0;
 `;
 const CardContentContainer = styled.div`
   display: flex;
