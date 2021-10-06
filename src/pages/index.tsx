@@ -6,11 +6,10 @@ import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../styles/themes";
 import { GlobalStyles } from "../styles/global.styles";
 import { useDarkMode } from "../utilities/hooks/darkMode";
-
-import Header from "../components/header";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
 import TestComponent from "./test";
+import Header from "../components/Header";
 // import { searchHandler } from "../utilities/functions/searchHandler";
 
 // fetch data
@@ -41,8 +40,10 @@ export interface Props {
 }
 const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<any>([]);
+
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
