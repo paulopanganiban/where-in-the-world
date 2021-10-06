@@ -1,19 +1,25 @@
 import React from "react";
 import { Props } from ".";
 import Image from "next/image";
-import Card from '../components/card'
+import Card from "../components/card";
 interface ListProps extends Props {
-    
   noDataFoundText: string;
 }
 const TestComponent = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
-    ({ name: { common }, flags: { svg } }, index) => (
-    //   <li key={index}>
-    //     {common}
-    //     <img alt={common} src={svg} width={300} height={300} />
-        <Card key={index} countryName={common} svg={svg}/>
-    //   </li>
+    ({ name: { common }, flags: { svg }, population, region, capital }, index) => (
+      //   <li key={index}>
+      //     {common}
+      //     <img alt={common} src={svg} width={300} height={300} />
+      <Card
+        key={index}
+        countryName={common}
+        svg={svg}
+        population={population}
+        region={region}
+        capital={capital}
+      />
+      //   </li>
     )
   );
 

@@ -4,9 +4,12 @@ import { numberWithCommas as getNumberWithCommas } from "../../utilities/functio
 interface Props {
   countryName: string;
   population: number;
-  region?: string;
-  capital?: string;
+  region: string;
+  capital: string[];
   svg: string;
+}
+interface StyledTextProps {
+  thin?: boolean;
 }
 const Card = ({ countryName, population, region, capital, svg }: Props) => {
   const populationCount: string = getNumberWithCommas(population);
@@ -14,10 +17,20 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
     <CardContainer>
       <StyledImage src={svg} />
       <CardContentContainer>
-        <StyledSpan>{countryName}</StyledSpan>
+          <StyledSpan>{countryName}</StyledSpan>
         <StyledTextContainer>
-          <StyledText>Population</StyledText>
-          <StyledText>{populationCount}</StyledText>
+          <StyledTextWrapper>
+            <StyledText>Population: </StyledText>
+            <StyledText thin={true}>{populationCount}</StyledText>
+          </StyledTextWrapper>
+          <StyledTextWrapper>
+            <StyledText>Region: </StyledText>
+            <StyledText thin={true}>{region}</StyledText>
+          </StyledTextWrapper>
+          <StyledTextWrapper>
+            <StyledText>Capital: </StyledText>
+            <StyledText thin={true}>{capital ? capital[0] : 'N/a'}</StyledText>
+          </StyledTextWrapper>
         </StyledTextContainer>
       </CardContentContainer>
     </CardContainer>
@@ -26,13 +39,24 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
 
 export default Card;
 const StyledTextContainer = styled.div`
-display: flex;
+margin: 25px 0 0 24px;
+padding: 0;
 `;
-const StyledText = styled.p``;
+const StyledTextWrapper = styled.div`
+  display: flex;
+  margin: 0 4px 14px 0;
+  padding: 0;
+`;
+const StyledText = styled.p<StyledTextProps>`
+  margin: 0 4px 0 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: ${({ thin }) => (thin ? 0 : 300)};
+`;
 const StyledSpan = styled.span`
   font-size: 18px;
   font-weight: 600;
-  margin: 30px 0 0 24px;
+  margin: 25px 0 0 24px;
 `;
 const CardContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
@@ -47,5 +71,5 @@ const StyledImage = styled.img`
 `;
 const CardContentContainer = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
 `;
