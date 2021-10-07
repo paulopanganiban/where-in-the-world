@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+import Link from "next/link";
 interface Props {
   title: string;
   iconSize: "small" | "inherit" | "medium" | "large" | undefined;
@@ -27,8 +27,8 @@ const FilterDropDown = ({ title, iconSize }: Props) => {
 };
 
 export default FilterDropDown;
+
 const DropDownContentContainer = styled.div`
-margin-top: 150px;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }) => theme.background};
@@ -37,15 +37,6 @@ margin-top: 150px;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  > a {
-    font-size: 14px;
-    display: block;
-    :hover {
-      border-radius: 5px;
-      background-color: ${({theme}) => theme.body};
-      display: block;
-    }
-  }
 `;
 const StyledExpandMoreIcon = styled(ExpandMoreIcon)`
   margin-right: 20px;

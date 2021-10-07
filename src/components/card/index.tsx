@@ -17,7 +17,7 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
   return (
     <Link href={`country/${countryName.toLowerCase()}`} passHref>
       <CardContainer>
-        <Image src={svg} alt={countryName}/>
+        <Image src={svg} alt={countryName} />
         <CardContentContainer>
           <Span>{countryName}</Span>
           <TextContainer>
@@ -31,9 +31,7 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
             </TextWrapper>
             <TextWrapper>
               <Text>Capital: </Text>
-              <Text thin={true}>
-                {capital ? capital[0] : "N/a"}
-              </Text>
+              <Text thin={true}>{capital ? capital[0] : "N/a"}</Text>
             </TextWrapper>
           </TextContainer>
         </CardContentContainer>
@@ -59,11 +57,14 @@ const Text = styled.p<StyledTextProps>`
   font-weight: ${({ thin }) => (thin ? 0 : 300)};
 `;
 const Span = styled.span`
+  text-overflow: ellipsis;
   font-size: 18px;
   font-weight: 600;
   margin: 25px 0 0 24px;
 `;
 const CardContainer = styled.div`
+overflow: hidden;
+white-space: nowrap;
   margin: 0px 38px 38px 38px;
   background-color: ${({ theme }) => theme.background};
   width: 265px;

@@ -65,33 +65,33 @@ const Home: NextPage<Props> = ({ data }) => {
     setCurrentPage(pageNumber);
   };
   return (
-    <Layout>
-      <MainContainer>
-        <MainWrapper>
-          <TopMainContainer>
-            <SearchInput
-              searchKeyWord={searchKeyWordHandler}
-              searchTerm={searchTerm}
+    <MainContainer>
+      <MainWrapper>
+        <TopMainContainer>
+          <SearchInput
+            searchKeyWord={searchKeyWordHandler}
+            searchTerm={searchTerm}
+          />
+          <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
+        </TopMainContainer>
+        <BottomMainContainer>
+          {fetchedData && (
+            <List
+              data={searchTerm.length < 1 ? currentItems : searchResults}
+              noDataFoundText={"No Countries Available"}
             />
-            <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
-          </TopMainContainer>
-          <BottomMainContainer>
-            {fetchedData && (
-              <List
-                data={searchTerm.length < 1 ? currentItems : searchResults}
-                noDataFoundText={"No Countries Available"}
-              />
-            )}
-          </BottomMainContainer>
-        </MainWrapper>
-      </MainContainer>
-      {/* <Pagination
+          )}
+        </BottomMainContainer>
+      </MainWrapper>
+    </MainContainer>
+  );
+  {
+    /* <Pagination
             itemsPerPage={itemsPerPage}
             totalItems={fetchedData.length}
             paginate={paginate}
-          /> */}
-    </Layout>
-  );
+          /> */
+  }
 };
 
 export default Home;
