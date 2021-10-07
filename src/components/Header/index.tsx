@@ -1,5 +1,8 @@
 import React from "react";
+
 import styled from "styled-components";
+import Link from 'next/link'
+
 import DarkModeButton from "../darkMode/darkModeButton";
 import DarkModeIcon from "../darkMode/darkModeIcon";
 interface Props {
@@ -11,7 +14,9 @@ interface Props {
 const Header = ({ title, theme, toggleTheme, themeMode }: Props) => {
   return (
     <HeaderContainer>
+      <Link href='/' passHref>
       <StyledH1>{title}</StyledH1>
+      </Link>
       <DarkModeContainer>
         <DarkModeIcon theme={theme} width={12} height={12}/>
         <DarkModeButton
@@ -26,6 +31,7 @@ const Header = ({ title, theme, toggleTheme, themeMode }: Props) => {
 
 export default Header;
 const StyledH1 = styled.h1`
+cursor: pointer;
 margin-left: 80px;
 @media all and (max-width: 375px) { 
   margin-left: 10px;

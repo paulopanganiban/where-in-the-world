@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Link from 'next/link'
+import Link from "next/link";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
 interface Props {
   countryName: string;
@@ -14,28 +14,30 @@ interface StyledTextProps {
 }
 const Card = ({ countryName, population, region, capital, svg }: Props) => {
   const populationCount: string = getNumberWithCommas(population);
-  return (<Link href={`country/${countryName.toLowerCase()}`} passHref>
-
-    <CardContainer>
-      <StyledImage src={svg} />
-      <CardContentContainer>
-        <StyledSpan>{countryName}</StyledSpan>
-        <StyledTextContainer>
-          <StyledTextWrapper>
-            <StyledText>Population: </StyledText>
-            <StyledText thin={true}>{populationCount}</StyledText>
-          </StyledTextWrapper>
-          <StyledTextWrapper>
-            <StyledText>Region: </StyledText>
-            <StyledText thin={true}>{region}</StyledText>
-          </StyledTextWrapper>
-          <StyledTextWrapper>
-            <StyledText>Capital: </StyledText>
-            <StyledText thin={true}>{capital ? capital[0] : "N/a"}</StyledText>
-          </StyledTextWrapper>
-        </StyledTextContainer>
-      </CardContentContainer>
-    </CardContainer>
+  return (
+    <Link href={`country/${countryName.toLowerCase()}`} passHref>
+      <CardContainer>
+        <StyledImage src={svg} />
+        <CardContentContainer>
+          <StyledSpan>{countryName}</StyledSpan>
+          <StyledTextContainer>
+            <StyledTextWrapper>
+              <StyledText>Population: </StyledText>
+              <StyledText thin={true}>{populationCount}</StyledText>
+            </StyledTextWrapper>
+            <StyledTextWrapper>
+              <StyledText>Region: </StyledText>
+              <StyledText thin={true}>{region}</StyledText>
+            </StyledTextWrapper>
+            <StyledTextWrapper>
+              <StyledText>Capital: </StyledText>
+              <StyledText thin={true}>
+                {capital ? capital[0] : "N/a"}
+              </StyledText>
+            </StyledTextWrapper>
+          </StyledTextContainer>
+        </CardContentContainer>
+      </CardContainer>
     </Link>
   );
 };
@@ -78,4 +80,5 @@ const StyledImage = styled.img`
 const CardContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;

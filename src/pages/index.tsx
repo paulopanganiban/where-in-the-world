@@ -1,14 +1,9 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "../styles/themes";
-import { GlobalStyles } from "../styles/global.styles";
-import { useDarkMode } from "../utilities/hooks/darkMode";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
-import Header from "../components/header";
 import List from "../components/list";
 import Pagination from "../components/pagination";
 import Layout from "../components/layout";
