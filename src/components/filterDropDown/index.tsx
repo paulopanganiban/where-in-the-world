@@ -28,6 +28,7 @@ const FilterDropDown = ({ title, iconSize }: Props) => {
 
 export default FilterDropDown;
 const DropDownContentContainer = styled.div`
+margin-top: 150px;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }) => theme.background};

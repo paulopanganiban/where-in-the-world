@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Link from 'next/link'
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
 interface Props {
   countryName: string;
@@ -13,7 +14,8 @@ interface StyledTextProps {
 }
 const Card = ({ countryName, population, region, capital, svg }: Props) => {
   const populationCount: string = getNumberWithCommas(population);
-  return (
+  return (<Link href={`country/${countryName.toLowerCase()}`} passHref>
+
     <CardContainer>
       <StyledImage src={svg} />
       <CardContentContainer>
@@ -34,6 +36,7 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
         </StyledTextContainer>
       </CardContentContainer>
     </CardContainer>
+    </Link>
   );
 };
 

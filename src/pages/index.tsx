@@ -11,6 +11,7 @@ import FilterDropDown from "../components/filterDropDown";
 import Header from "../components/header";
 import List from "../components/list";
 import Pagination from "../components/pagination";
+import Layout from "../components/layout";
 
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
 export const getServerSideProps = async () => {
@@ -89,7 +90,7 @@ const Home: NextPage<Props> = ({ data }) => {
           toggleTheme={themeToggler}
           themeMode={themeMode}
         />
-        <main>
+        <Layout>
           <MainContainer>
             <MainWrapper>
             <TopMainContainer>
@@ -114,7 +115,7 @@ const Home: NextPage<Props> = ({ data }) => {
             totalItems={fetchedData.length}
             paginate={paginate}
           /> */}
-        </main>
+        </Layout>
       </>
     </ThemeProvider>
   );
