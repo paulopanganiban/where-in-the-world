@@ -1,7 +1,8 @@
 import React from "react";
 import styled from 'styled-components'
+import Layout from "../../components/layout";
 const Country = () => {
-  return <div><H1>hi</H1></div>;
+  return <Layout><H1>hi</H1></Layout>;
 };
 
 export default Country;
