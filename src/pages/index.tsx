@@ -66,15 +66,15 @@ const Home: NextPage<Props> = ({ data }) => {
   };
   return (
     <Layout>
-      <TopMainContainer>
-        <SearchInput
-          searchKeyWord={searchKeyWordHandler}
-          searchTerm={searchTerm}
-        />
-        <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
-      </TopMainContainer>
       <MainContainer>
         <MainWrapper>
+          <TopMainContainer>
+            <SearchInput
+              searchKeyWord={searchKeyWordHandler}
+              searchTerm={searchTerm}
+            />
+            <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
+          </TopMainContainer>
           <BottomMainContainer>
             {fetchedData && (
               <List
@@ -103,7 +103,10 @@ const TopMainContainer = styled.div`
   justify-content: space-between;
 `;
 const MainContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 `;
-const MainWrapper = styled.div``;
+const MainWrapper = styled.div`
+  width: 90%;
+  margin-left: auto;
+`;
