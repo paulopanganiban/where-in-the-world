@@ -49,7 +49,6 @@ const Home: NextPage<Props> = ({ data }) => {
           .includes(searchTerm.toLowerCase());
       });
       setSearchResults(newDataList);
-      console.log(newDataList);
     } else {
       setSearchResults(fetchedData);
     }
@@ -67,15 +66,15 @@ const Home: NextPage<Props> = ({ data }) => {
   };
   return (
     <Layout>
+      <TopMainContainer>
+        <SearchInput
+          searchKeyWord={searchKeyWordHandler}
+          searchTerm={searchTerm}
+        />
+        <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
+      </TopMainContainer>
       <MainContainer>
         <MainWrapper>
-          <TopMainContainer>
-            <SearchInput
-              searchKeyWord={searchKeyWordHandler}
-              searchTerm={searchTerm}
-            />
-            <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
-          </TopMainContainer>
           <BottomMainContainer>
             {fetchedData && (
               <List

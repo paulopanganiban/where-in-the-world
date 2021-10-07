@@ -3,7 +3,6 @@ import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyles = createGlobalStyle`
   html,body {
-    max-width: 100%;
     overflow-x: hidden;
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};

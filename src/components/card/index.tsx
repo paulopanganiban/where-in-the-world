@@ -17,25 +17,25 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
   return (
     <Link href={`country/${countryName.toLowerCase()}`} passHref>
       <CardContainer>
-        <StyledImage src={svg} />
+        <Image src={svg} alt={countryName}/>
         <CardContentContainer>
-          <StyledSpan>{countryName}</StyledSpan>
-          <StyledTextContainer>
-            <StyledTextWrapper>
-              <StyledText>Population: </StyledText>
-              <StyledText thin={true}>{populationCount}</StyledText>
-            </StyledTextWrapper>
-            <StyledTextWrapper>
-              <StyledText>Region: </StyledText>
-              <StyledText thin={true}>{region}</StyledText>
-            </StyledTextWrapper>
-            <StyledTextWrapper>
-              <StyledText>Capital: </StyledText>
-              <StyledText thin={true}>
+          <Span>{countryName}</Span>
+          <TextContainer>
+            <TextWrapper>
+              <Text>Population: </Text>
+              <Text thin={true}>{populationCount}</Text>
+            </TextWrapper>
+            <TextWrapper>
+              <Text>Region: </Text>
+              <Text thin={true}>{region}</Text>
+            </TextWrapper>
+            <TextWrapper>
+              <Text>Capital: </Text>
+              <Text thin={true}>
                 {capital ? capital[0] : "N/a"}
-              </StyledText>
-            </StyledTextWrapper>
-          </StyledTextContainer>
+              </Text>
+            </TextWrapper>
+          </TextContainer>
         </CardContentContainer>
       </CardContainer>
     </Link>
@@ -43,22 +43,22 @@ const Card = ({ countryName, population, region, capital, svg }: Props) => {
 };
 
 export default Card;
-const StyledTextContainer = styled.div`
+const TextContainer = styled.div`
   margin: 25px 0 0 24px;
   padding: 0;
 `;
-const StyledTextWrapper = styled.div`
+const TextWrapper = styled.div`
   display: flex;
   margin: 0 4px 14px 0;
   padding: 0;
 `;
-const StyledText = styled.p<StyledTextProps>`
+const Text = styled.p<StyledTextProps>`
   margin: 0 4px 0 0;
   font-size: 14px;
   font-style: normal;
   font-weight: ${({ thin }) => (thin ? 0 : 300)};
 `;
-const StyledSpan = styled.span`
+const Span = styled.span`
   font-size: 18px;
   font-weight: 600;
   margin: 25px 0 0 24px;
@@ -70,8 +70,9 @@ const CardContainer = styled.div`
   height: 335px;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 `;
-const StyledImage = styled.img`
+const Image = styled.img`
   height: 161px;
   width: 100%;
   object-fit: cover;
@@ -80,5 +81,4 @@ const StyledImage = styled.img`
 const CardContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  cursor: pointer;
 `;

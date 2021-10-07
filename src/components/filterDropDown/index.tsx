@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Test from "./test";
+
 interface Props {
   title: string;
   iconSize: "small" | "inherit" | "medium" | "large" | undefined;

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 interface Props {
@@ -40,7 +40,7 @@ const SearchInputContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
   width: 480px;
   height: 55px;
-  margin: 48px 20px 48px 77px;
+  margin: 48px 0 0 77px;
   @media all and (max-width: 375px) {
     width: 300px;
   }
