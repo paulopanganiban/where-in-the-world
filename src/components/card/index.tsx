@@ -9,7 +9,7 @@ interface Props {
   capital: string[];
   svg: string;
 }
-interface StyledTextProps {
+interface TextProps {
   thin?: boolean;
 }
 const Card = ({ countryName, population, region, capital, svg }: Props) => {
@@ -50,7 +50,7 @@ const TextWrapper = styled.div`
   margin: 0 4px 14px 0;
   padding: 0;
 `;
-const Text = styled.p<StyledTextProps>`
+const Text = styled.p<TextProps>`
   margin: 0 4px 0 0;
   font-size: 14px;
   font-style: normal;

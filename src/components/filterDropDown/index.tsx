@@ -10,18 +10,24 @@ const FilterDropDown = ({ title, iconSize }: Props) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <FilterDropDownContainer  onMouseEnter={() => setOpen(true)} onClick={() => setOpen(!open)}>
+    <FilterDropDownContainer
+      onMouseEnter={() => setOpen(true)}
+      onClick={() => setOpen(!open)}
+    >
       <TitleSpan>{title}</TitleSpan>
       <StyledExpandMoreIcon fontSize={iconSize} />
-      {open ? (
-        <DropDownContentContainer onMouseLeave={() => setOpen(false)} onClick={() => setOpen(false)}>
+      {open && (
+        <DropDownContentContainer
+          onMouseLeave={() => setOpen(false)}
+          onClick={() => setOpen(false)}
+        >
           <a href="#">Africa</a>
           <a href="#">America</a>
           <a href="#">Asia</a>
           <a href="#">Europe</a>
           <a href="#">Oceania</a>
         </DropDownContentContainer>
-      ) : null}
+      )}
     </FilterDropDownContainer>
   );
 };
