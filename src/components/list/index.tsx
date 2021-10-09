@@ -8,11 +8,11 @@ interface ListProps extends Props {
 const List = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
     (
-      { name: { common }, flags: { svg }, population, region, capital },
-      index
+      { name: { common }, flags: { svg }, population, region, capital, cca2 }
     ) => (
       <Card
-        key={index}
+        key={cca2}
+        cca2={cca2}
         countryName={common}
         svg={svg}
         population={population}

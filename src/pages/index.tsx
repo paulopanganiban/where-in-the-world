@@ -9,7 +9,7 @@ import Pagination from "../components/pagination";
 import Layout from "../components/layout";
 
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     const res = await fetch(defaultEndpoint);
     const data = await res.json();
@@ -30,12 +30,13 @@ export interface Props {
       flags: {
         svg: string;
       };
+      cca2: string;
     }
   ];
 }
 const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
-
+  console.log(fetchedData)
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<any>([]);
