@@ -3,21 +3,24 @@ import styled from "styled-components";
 import Layout from "../../components/layout";
 import { useRouter } from "next/router";
 import Link from "next/link";
-interface Props {
-  data: any;
-}
+import { Props } from "..";
+
+
 const Country = ({ data }: Props) => {
-  console.log(data);
+  const { name: {common }} = data[0]
+  console.log(data[0])
   return (
-    <>
-      <H1>this is article {data.name}</H1>
+    <CountryContainer>
+      <p>this is article {common}</p>
       <Link href="/">Go Back</Link>
-    </>
+    </CountryContainer>
   );
 };
 
 export default Country;
+const CountryContainer = styled.div`
 
+`
 const H1 = styled.h1``;
 
 export const getStaticProps = async (context: { params: { id: string } }) => {

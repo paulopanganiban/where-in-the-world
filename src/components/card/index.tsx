@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import Image from 'next/image';
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
 interface Props {
   countryName: string;
@@ -20,7 +21,7 @@ const Card = ({ countryName, population, region, capital, svg, cca2 }: Props) =>
     // <Link href={`country/${countryName.toLowerCase()}`} passHref>
     <Link href={`country/${cca2.toLowerCase()}`} passHref>
       <CardContainer>
-        <Image src={svg} alt={countryName} />
+        <Image src={svg} alt={countryName} height={161} width={265} objectFit={'cover'}/>
         <CardContentContainer>
           <Span>{countryName}</Span>
           <TextContainer>
@@ -76,12 +77,12 @@ white-space: nowrap;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
 `;
-const Image = styled.img`
-  height: 161px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 5px 5px 0 0;
-`;
+// const NextImage = styled(Image)`
+//   height: 161px;
+//   width: 100%;
+//   object-fit: cover;
+//   border-radius: 5px 5px 0 0;
+// `;
 const CardContentContainer = styled.div`
   display: flex;
   flex-direction: column;
