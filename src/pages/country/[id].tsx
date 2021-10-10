@@ -1,21 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Layout from "../../components/layout";
 import Link from "next/link";
 import Button from "../../components/button";
 import Image from "next/image";
 import { Props } from "..";
 import { useRouter } from "next/router";
 import { arrayToString } from "../../utilities/functions/stringManipulator.function";
+import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
 interface CountryProps extends Props {
   noDataFoundText?: string;
 }
 const Country = ({ data }: CountryProps) => {
   const router = useRouter();
-
   const country = data[0];
+  const populationCount: string = getNumberWithCommas(country.population);
   const currency = [Object.keys(country.currencies)[0]];
   const language = arrayToString(Object.values(country.languages));
+  const myObj = {
+    "Native Name": country.name.common,
+    "Population": populationCount,
+    "Region": country.region,
+    "Sub Region": country.subregion,
+    "Capital": country.capital,
+
+    // right
+    "Top Level": country.tld,
+    "Currencies": currency,
+    "Languages": language,
+  }
+
+  const [state] = useState(myObj);
+  console.log(country)
+  console.log(country.borders)
+  console.log()
   return (
     <CountryContainer>
       <CountryWrapper>
@@ -53,7 +70,7 @@ const Country = ({ data }: CountryProps) => {
                     <li>
                       <Span>
                         <h4>Population:</h4>
-                        <p>{country.population}</p>
+                        <p>{populationCount}</p>
                       </Span>
                     </li>
                     <li>
@@ -99,6 +116,17 @@ const Country = ({ data }: CountryProps) => {
                   </Ul>
                 </Content>
               </Wrapper>
+                <span>border countries{'    '}
+
+                  {
+                    country.borders.map((item: string) => (
+                      // <Link key={route} href={`/country/${route.toLowerCase()}`} passHref>
+                      
+                      <span key={item} onClick={() => console.log(item)}>{item}{'        '}</span>
+                      // </Link>
+                    ))
+                  }
+                </span>
             </RightContainer>
           </BottomWrapper>
         </BottomContainer>
@@ -117,11 +145,11 @@ const Span = styled.span`
 `;
 const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 const BottomWrapper = styled.div`
   display: flex;
   flex: 1;
-  justify-content: space-evenly;
 
   flex-wrap: wrap;
 `;
@@ -129,7 +157,7 @@ interface ContentProps {
   right?: boolean;
 }
 const Content = styled.div<ContentProps>`
-  margin-left: ${({ right }) => (right ? "14px" : "0")};
+  margin-left: ${({ right }) => (right ? "0" : "0")};
 `;
 const CountryContainer = styled.div`
   display: flex;
@@ -155,11 +183,12 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 117px;
   max-width: 625px;
+  @media all and (max-width: 1000px) { 
+  }
 `;
 export const getStaticProps = async (context: { params: { id: string } }) => {
-  const id = context.params.id;
+  const id = context.params.id
   const res = await fetch(`https://restcountries.com/v3.1/alpha/${id}`);
   const data = await res.json();
   return { props: { data } };
@@ -169,8 +198,8 @@ export const getStaticPaths = async () => {
   const res = await fetch(`https://restcountries.com/v3.1/all`);
   const data = await res.json();
 
-  const paths = data.map((item: { cca2: string }) => {
-    const { cca2 } = item;
+  const paths = data.map((item: { cca3: string }) => {
+    const { cca3: cca2 } = item;
     return {
       params: { id: cca2.toLowerCase() },
     };

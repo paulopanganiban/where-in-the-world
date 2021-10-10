@@ -33,10 +33,11 @@ export interface Props {
       currencies: {};
       languages: {};
       tld: [];
+      borders: [];
       flags: {
         svg: string;
       };
-      cca2: string;
+      cca3: string;
     }
   ];
 }
@@ -115,5 +116,5 @@ const MainContainer = styled.div`
 `;
 const MainWrapper = styled.div`
   width: 90%;
-  margin-left: auto;
+  margin: 0 auto;
 `;

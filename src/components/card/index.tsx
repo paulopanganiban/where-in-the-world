@@ -9,16 +9,16 @@ interface Props {
   region: string;
   capital: string[];
   svg: string;
-  cca2: string;
+  cca3: string;
 }
 interface TextProps {
   thin?: boolean;
 }
-const Card = ({ countryName, population, region, capital, svg, cca2 }: Props) => {
+const Card = ({ countryName, population, region, capital, svg, cca3 }: Props) => {
   const populationCount: string = getNumberWithCommas(population);
-  console.log(cca2)
+  console.log(cca3)
   return (
-    <Link href={`country/${cca2.toLowerCase()}`} passHref>
+    <Link href={`country/${cca3.toLowerCase()}`} passHref>
       <CardContainer>
         <Image src={svg} alt={countryName} height={161} width={265} objectFit={'cover'}/>
         <CardContentContainer>
