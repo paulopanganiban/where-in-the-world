@@ -122,7 +122,7 @@ const Country = ({ data }: CountryProps) => {
                     country.borders.map((item: string) => (
                       // <Link key={route} href={`/country/${route.toLowerCase()}`} passHref>
                       
-                      <span key={item} onClick={() => console.log(item)}>{item}{'        '}</span>
+                      <span key={item} onClick={() => router.push(`/country/${item.toLowerCase()}`)}>{item}{'        '}</span>
                       // </Link>
                     ))
                   }
