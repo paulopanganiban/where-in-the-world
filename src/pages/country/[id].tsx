@@ -14,25 +14,29 @@ const Country = ({ data }: CountryProps) => {
   const router = useRouter();
   const country = data[0];
   const populationCount: string = getNumberWithCommas(country.population);
-  const currency = [Object.keys(country.currencies)[0]];
-  const language = arrayToString(Object.values(country.languages));
+  const currency = country.currencies
+    ? [Object.keys(country?.currencies)[0]]
+    : [];
+  const language = country.languages
+    ? arrayToString(Object.values(country.languages))
+    : [];
   const myObj = {
     "Native Name": country.name.common,
-    "Population": populationCount,
-    "Region": country.region,
+    Population: populationCount,
+    Region: country.region,
     "Sub Region": country.subregion,
-    "Capital": country.capital,
+    Capital: country.capital,
 
     // right
     "Top Level": country.tld,
-    "Currencies": currency,
-    "Languages": language,
-  }
+    Currencies: currency,
+    Languages: language,
+  };
 
   const [state] = useState(myObj);
-  console.log(country)
-  console.log(country.borders)
-  console.log()
+  console.log(country);
+  console.log(country.borders);
+  console.log();
   return (
     <CountryContainer>
       <CountryWrapper>
@@ -54,6 +58,7 @@ const Country = ({ data }: CountryProps) => {
                 height={401}
                 src={country.flags.svg}
                 alt={country.name.common}
+                objectFit={"cover"}
               />
             </LeftContainer>
             <RightContainer>
@@ -116,17 +121,23 @@ const Country = ({ data }: CountryProps) => {
                   </Ul>
                 </Content>
               </Wrapper>
-                <span>border countries{'    '}
-
-                  {
-                    country.borders.map((item: string) => (
-                      // <Link key={route} href={`/country/${route.toLowerCase()}`} passHref>
-                      
-                      <span key={item} onClick={() => router.push(`/country/${item.toLowerCase()}`)}>{item}{'        '}</span>
-                      // </Link>
+              <span>
+                border countries{"    "}
+                {country.borders
+                  ? country.borders.map((item: string) => (
+                      <ButtonWrapper key={item}>
+                        <Button
+                          width={"98px"}
+                          height={"30px"}
+                          onClick={() =>
+                            router.push(`/country/${item.toLowerCase()}`)
+                          }
+                          label={item}
+                        ></Button>
+                      </ButtonWrapper>
                     ))
-                  }
-                </span>
+                  : "N/a"}
+              </span>
             </RightContainer>
           </BottomWrapper>
         </BottomContainer>
@@ -136,9 +147,10 @@ const Country = ({ data }: CountryProps) => {
 };
 
 export default Country;
+const ButtonWrapper = styled.span``;
 const Ul = styled.ul`
-list-style-type: none;
-`
+  list-style-type: none;
+`;
 const ButtonsWrapper = styled.div``;
 const Span = styled.span`
   display: flex;
@@ -184,14 +196,18 @@ const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 625px;
-  @media all and (max-width: 1000px) { 
+  @media all and (max-width: 1000px) {
   }
 `;
 export const getStaticProps = async (context: { params: { id: string } }) => {
-  const id = context.params.id
-  const res = await fetch(`https://restcountries.com/v3.1/alpha/${id}`);
-  const data = await res.json();
-  return { props: { data } };
+  try {
+    const id = context.params.id;
+    const res = await fetch(`https://restcountries.com/v3.1/alpha/${id}`);
+    const data = await res.json();
+    return { props: { data } };
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getStaticPaths = async () => {
