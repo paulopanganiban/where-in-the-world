@@ -23,10 +23,16 @@ export interface Props {
     {
       name: {
         common: string;
+        official: string;
+        nativeName?: {};
       };
       population: number;
       region: string;
+      subregion: string;
       capital: [];
+      currencies: {};
+      languages: {};
+      tld: [];
       flags: {
         svg: string;
       };
@@ -36,7 +42,7 @@ export interface Props {
 }
 const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
-  console.log(fetchedData)
+  console.log(fetchedData);
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<any>([]);

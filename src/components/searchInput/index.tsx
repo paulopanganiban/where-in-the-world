@@ -40,7 +40,7 @@ const SearchInputContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
   width: 480px;
   height: 55px;
-  margin: 48px 0 0 77px;
+  margin: 48px 0 0 0;
   @media all and (max-width: 375px) {
     width: 300px;
   }
