@@ -111,10 +111,8 @@ const TopMainContainer = styled.div`
   justify-content: space-between;
 `;
 const MainContainer = styled.div`
-  margin-left: auto;
-  margin-right: auto;
 `;
 const MainWrapper = styled.div`
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 `;

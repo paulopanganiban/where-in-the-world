@@ -121,8 +121,9 @@ const Country = ({ data }: CountryProps) => {
                   </Ul>
                 </Content>
               </Wrapper>
-              <span>
-                border countries{"    "}
+              {/* PROTOTYPING styles */}
+              <span style={{margin: '77px 0 0 0', width: '100%', display: 'flex', flexWrap: 'wrap', alignItems: 'center'}}>
+                <h4>Border Countries:</h4>{"    "}
                 {country.borders
                   ? country.borders.map((item: string) => (
                       <ButtonWrapper key={item}>
@@ -133,7 +134,8 @@ const Country = ({ data }: CountryProps) => {
                             router.push(`/country/${item.toLowerCase()}`)
                           }
                           label={item}
-                        ></Button>
+                          margin={'5px'}
+                       />
                       </ButtonWrapper>
                     ))
                   : "N/a"}
@@ -147,22 +149,26 @@ const Country = ({ data }: CountryProps) => {
 };
 
 export default Country;
-const ButtonWrapper = styled.span``;
+
+const ButtonWrapper = styled.span`
+margin: 5px;`;
 const Ul = styled.ul`
   list-style-type: none;
 `;
-const ButtonsWrapper = styled.div``;
-const Span = styled.span`
+const Span = styled.span<{margin?: string}>`
   display: flex;
+  margin: ${({margin}) => margin};
 `;
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
 `;
 const BottomWrapper = styled.div`
   display: flex;
   flex: 1;
-
+  justify-content: space-between;
   flex-wrap: wrap;
 `;
 interface ContentProps {
@@ -172,12 +178,12 @@ const Content = styled.div<ContentProps>`
   margin-left: ${({ right }) => (right ? "0" : "0")};
 `;
 const CountryContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  display: block;
 `;
 const CountryWrapper = styled.div`
-  max-width: 1440px;
-  padding: 0 10px;
+  width: 80%;
+  right: 0;
+  margin: 0 auto;
 `;
 const TopContainer = styled.div`
   height: 112px;

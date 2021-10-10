@@ -62,5 +62,5 @@ const FilterDropDownContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
   width: 200px;
   height: 55px;
-  margin: 48px 40px 48px 77px;
+  margin: 48px 0;
 `;
