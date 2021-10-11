@@ -20,20 +20,6 @@ const Country = ({ data }: CountryProps) => {
   const language = country.languages
     ? arrayToString(Object.values(country.languages))
     : [];
-  const myObj = {
-    "Native Name": country.name.common,
-    Population: populationCount,
-    Region: country.region,
-    "Sub Region": country.subregion,
-    Capital: country.capital,
-
-    // right
-    "Top Level": country.tld,
-    Currencies: currency,
-    Languages: language,
-  };
-
-  const [state] = useState(myObj);
   console.log(country);
   console.log(country.borders);
   console.log();
@@ -46,7 +32,7 @@ const Country = ({ data }: CountryProps) => {
             width={"137px"}
             height={"42px"}
             onClick={() => {
-              router.push("/");
+              router.back();
             }}
           ></Button>
         </TopContainer>
@@ -68,31 +54,31 @@ const Country = ({ data }: CountryProps) => {
                   <Ul>
                     <li>
                       <Span>
-                        <h4>Native Name:</h4>
+                        <H4>Native Name:</H4>
                         <p>{country.name.official}</p>
                       </Span>
                     </li>
                     <li>
                       <Span>
-                        <h4>Population:</h4>
+                        <H4>Population:</H4>
                         <p>{populationCount}</p>
                       </Span>
                     </li>
                     <li>
                       <Span>
-                        <h4>Region:</h4>
+                        <H4>Region:</H4>
                         <p>{country.region}</p>
                       </Span>
                     </li>
                     <li>
                       <Span>
-                        <h4>Sub Region:</h4>
+                        <H4>Sub Region:</H4>
                         <p>{country.subregion}</p>
                       </Span>
                     </li>
                     <li>
                       <Span>
-                        <h4>Capital:</h4>
+                        <H4>Capital:</H4>
                         <p>{country.capital}</p>
                       </Span>
                     </li>
@@ -102,19 +88,19 @@ const Country = ({ data }: CountryProps) => {
                   <Ul>
                     <li>
                       <Span>
-                        <h4>Top Level Domain:</h4>
+                        <H4>Top Level Domain:</H4>
                         <p>{country.tld}</p>
                       </Span>
                     </li>
                     <li>
                       <Span>
-                        <h4>Currencies:</h4>
+                        <H4>Currencies:</H4>
                         <p>{currency}</p>
                       </Span>
                     </li>
                     <li>
                       <Span>
-                        <h4>Languages:</h4>
+                        <H4>Languages:</H4>
                         <p>{language}</p>
                       </Span>
                     </li>
@@ -122,8 +108,10 @@ const Country = ({ data }: CountryProps) => {
                 </Content>
               </Wrapper>
               {/* PROTOTYPING styles */}
-              <span style={{margin: '77px 0 0 0', width: '100%', display: 'flex', flexWrap: 'wrap', alignItems: 'center'}}>
-                <h4>Border Countries:</h4>{"    "}
+              <ListSpan
+              >
+                <h4>Border Countries:</h4>
+                {"    "}
                 {country.borders
                   ? country.borders.map((item: string) => (
                       <ButtonWrapper key={item}>
@@ -134,12 +122,12 @@ const Country = ({ data }: CountryProps) => {
                             router.push(`/country/${item.toLowerCase()}`)
                           }
                           label={item}
-                          margin={'5px'}
-                       />
+                          margin={"5px"}
+                        />
                       </ButtonWrapper>
                     ))
                   : "N/a"}
-              </span>
+              </ListSpan>
             </RightContainer>
           </BottomWrapper>
         </BottomContainer>
@@ -149,15 +137,26 @@ const Country = ({ data }: CountryProps) => {
 };
 
 export default Country;
-
+const ListSpan = styled.span`
+  margin: "77px 0 0 0";
+  width: "100%";
+  display: "flex";
+  flex-wrap: "wrap";
+  align-items: "center";
+`;
+const H4 = styled.h4`
+  margin-right: 3px;
+`;
 const ButtonWrapper = styled.span`
-margin: 5px;`;
+  margin: 5px;
+`;
 const Ul = styled.ul`
   list-style-type: none;
 `;
-const Span = styled.span<{margin?: string}>`
+const Span = styled.span<{ margin?: string }>`
   display: flex;
-  margin: ${({margin}) => margin};
+  margin: 8px 0;
+  margin: ${({ margin }) => margin};
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -202,6 +201,7 @@ const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 625px;
+  
   @media all and (max-width: 1000px) {
   }
 `;
