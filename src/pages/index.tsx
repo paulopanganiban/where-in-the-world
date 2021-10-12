@@ -5,9 +5,9 @@ import styled, { ThemeProvider } from "styled-components";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
 import List from "../components/list";
-import Pagination from "../components/pagination";
+import BasicPagination from "../components/pagination";
 import Layout from "../components/layout";
-import ReactPaginate from 'react-paginate'
+
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
 export const getStaticProps = async () => {
   try {
@@ -73,6 +73,9 @@ const Home: NextPage<Props> = ({ data }) => {
     console.log(pageNumber);
     setCurrentPage(pageNumber);
   };
+  const handlePageClick = (data: {selected: number}) => {
+    console.log(data.selected + 1)
+  }
   return (
     <MainContainer>
       <MainWrapper>
@@ -98,13 +101,14 @@ const Home: NextPage<Props> = ({ data }) => {
         </BottomMainContainer>
       </MainWrapper>
       {!searchTerm && (
-        <Pagination
-          itemsPerPage={itemsPerPage}
-          totalItems={fetchedData.length}
-          // totalItems={searchTerm.length < 1 ? fetchedData.length : searchResults.length}
-          paginate={paginate}
-        />
-        <ReactPaginate />
+        <>
+          <BasicPagination
+             itemsPerPage={itemsPerPage}
+             totalItems={fetchedData.length}
+             // totalItems={searchTerm.length < 1 ? fetchedData.length : searchResults.length}
+             paginate={paginate}
+          />
+        </>
       )}
     </MainContainer>
   );
@@ -117,7 +121,6 @@ const TopMainContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
 `;
 const MainContainer = styled.div``;
 const MainWrapper = styled.div`
