@@ -41,7 +41,7 @@ const FilterDropDown = ({ title, iconSize, searchKeyWord, regions }: Props) => {
 };
 
 export default FilterDropDown;
-const themeCSS = css`
+export const themeCSS = css`
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
 `;
