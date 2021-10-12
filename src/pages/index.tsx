@@ -46,7 +46,7 @@ const Home: NextPage<Props> = ({ data }) => {
   console.log(fetchedData);
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState()
+  const [filter, setFilter] = useState("");
   const [searchResults, setSearchResults] = useState<any>([]);
   const searchKeyWordHandler = (searchTerm: string) => {
     setSearchTerm(searchTerm);

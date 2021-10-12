@@ -3,13 +3,16 @@ import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 interface Props {
   term: string;
-  //   searchKeyWord?: () => void;
+  searchTerm:  string | ReadonlyArray<string> | number | undefined;
+  searchKeyWord: (value: string) => void;
 }
-const SearchInput = ({ searchTerm, searchKeyWord }: any) => {
+const SearchInput = ({ searchTerm, searchKeyWord }: Props) => {
   const inputElement = useRef<HTMLInputElement>(null);
   const getSearchTerm = (e: React.FormEvent<HTMLInputElement>) => {
     const element = e.currentTarget as HTMLInputElement;
     const value = element.value;
+    // grab the value then pass it to the parent
+    // root index.tsx
     searchKeyWord(value);
   };
   return (
