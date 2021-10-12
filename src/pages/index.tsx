@@ -7,7 +7,7 @@ import FilterDropDown from "../components/filterDropDown";
 import List from "../components/list";
 import Pagination from "../components/pagination";
 import Layout from "../components/layout";
-
+import ReactPaginate from 'react-paginate'
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
 export const getStaticProps = async () => {
   try {
@@ -104,6 +104,7 @@ const Home: NextPage<Props> = ({ data }) => {
           // totalItems={searchTerm.length < 1 ? fetchedData.length : searchResults.length}
           paginate={paginate}
         />
+        <ReactPaginate />
       )}
     </MainContainer>
   );
