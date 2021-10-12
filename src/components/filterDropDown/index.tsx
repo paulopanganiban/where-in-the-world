@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Link from "next/link";
+import MyTest from "./mytest";
 interface Props {
+  searchKeyWord: (searchTerm: string) => void;
   title: string;
   iconSize: "small" | "inherit" | "medium" | "large" | undefined;
 }
-const FilterDropDown = ({ title, iconSize }: Props) => {
+const FilterDropDown = ({ title, iconSize, searchKeyWord }: Props) => {
   const [open, setOpen] = useState(false);
+  const [keyWord, setKeyWord] = useState("");
+  // const getFilterKeyWord = (e) => {
 
+  // }
   return (
+    <>
     <FilterDropDownContainer
       onMouseEnter={() => setOpen(true)}
       onClick={() => setOpen(!open)}
@@ -21,14 +27,19 @@ const FilterDropDown = ({ title, iconSize }: Props) => {
           onMouseLeave={() => setOpen(false)}
           onClick={() => setOpen(false)}
         >
-          <a href="#">Africa</a>
+          <a>Africa</a>
           <a href="#">America</a>
           <a href="#">Asia</a>
           <a href="#">Europe</a>
           <a href="#">Oceania</a>
         </DropDownContentContainer>
+      
+      
+        
       )}
     </FilterDropDownContainer>
+      <MyTest/>
+    </>
   );
 };
 

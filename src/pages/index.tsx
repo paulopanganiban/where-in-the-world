@@ -46,6 +46,7 @@ const Home: NextPage<Props> = ({ data }) => {
   console.log(fetchedData);
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
+  const [filter, setFilter] = useState()
   const [searchResults, setSearchResults] = useState<any>([]);
   const searchKeyWordHandler = (searchTerm: string) => {
     setSearchTerm(searchTerm);
@@ -61,7 +62,6 @@ const Home: NextPage<Props> = ({ data }) => {
       setSearchResults(fetchedData);
     }
   };
-
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
@@ -80,7 +80,9 @@ const Home: NextPage<Props> = ({ data }) => {
             searchKeyWord={searchKeyWordHandler}
             searchTerm={searchTerm}
           />
-          <FilterDropDown title={"Filter by Region"} iconSize={"small"} />
+          <FilterDropDown title={"Filter by Region"} iconSize={"small"}
+          searchKeyWord={searchKeyWordHandler}
+          />
         </TopMainContainer>
         <BottomMainContainer>
           {fetchedData && (
@@ -91,15 +93,13 @@ const Home: NextPage<Props> = ({ data }) => {
           )}
         </BottomMainContainer>
       </MainWrapper>
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={fetchedData.length}
+        paginate={paginate}
+      />
     </MainContainer>
   );
-  {
-    /* <Pagination
-            itemsPerPage={itemsPerPage}
-            totalItems={fetchedData.length}
-            paginate={paginate}
-          /> */
-  }
 };
 
 export default Home;
@@ -110,8 +110,7 @@ const TopMainContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 `;
-const MainContainer = styled.div`
-`;
+const MainContainer = styled.div``;
 const MainWrapper = styled.div`
   width: 80%;
   margin: 0 auto;

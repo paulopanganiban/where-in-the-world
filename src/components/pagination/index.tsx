@@ -1,4 +1,5 @@
 import React from "react";
+import styled from 'styled-components'
 interface Props {
   itemsPerPage: number;
   paginate: (pageNumber: number) => void;
@@ -10,16 +11,33 @@ const Pagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
     pageNumbers.push(i);
   }
   return (
-    <nav>
-      <ul>
+    <Nav>
+      <Ul>
         {pageNumbers.map((number) => (
-          <li key={number}>
+          <Li key={number}>
             <a onClick={() => paginate(number)}>{number}</a>
-          </li>
+          </Li>
         ))}
-      </ul>
-    </nav>
+      </Ul>
+    </Nav>
   );
 };
 
 export default Pagination;
+const Ul = styled.ul`
+display: inline-block;
+list-style-type: none;
+cursor: pointer;
+`
+const Li = styled.li`
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  &.active {
+    background-color: red;
+  }
+`
+const Nav = styled.nav`
+display: flex;
+justify-content: center;
+`
