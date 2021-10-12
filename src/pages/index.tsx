@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
@@ -43,7 +43,7 @@ export interface Props {
 }
 const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
-  console.log(fetchedData);
+
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("");
@@ -67,7 +67,7 @@ const Home: NextPage<Props> = ({ data }) => {
   const [itemsPerPage] = useState(10);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = fetchedData.slice(indexOfFirstItem, indexOfLastItem);
   const paginate = (pageNumber: number) => {
     console.log(pageNumber);
     setCurrentPage(pageNumber);
@@ -93,11 +93,14 @@ const Home: NextPage<Props> = ({ data }) => {
           )}
         </BottomMainContainer>
       </MainWrapper>
-      <Pagination
-        itemsPerPage={itemsPerPage}
-        totalItems={fetchedData.length}
-        paginate={paginate}
-      />
+      {
+        !searchTerm && (<Pagination
+          itemsPerPage={itemsPerPage}
+          totalItems={fetchedData.length}
+          // totalItems={searchTerm.length < 1 ? fetchedData.length : searchResults.length}
+          paginate={paginate}
+        />)
+      }
     </MainContainer>
   );
 };

@@ -1,5 +1,6 @@
-import React from "react";
-import styled from 'styled-components'
+import { useRouter } from "next/router";
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
 interface Props {
   itemsPerPage: number;
   paginate: (pageNumber: number) => void;
@@ -7,15 +8,28 @@ interface Props {
 }
 const Pagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
   const pageNumbers = [];
+  const [active, setActive] = useState(false);
+  const listElement = useRef<HTMLLIElement>(null);
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i);
   }
+  const handleClick = (number: number) => {
+    paginate(number);
+    setActive(true);
+  };
   return (
     <Nav>
       <Ul>
         {pageNumbers.map((number) => (
-          <Li key={number}>
-            <a onClick={() => paginate(number)}>{number}</a>
+          <Li
+          ref={listElement}
+            key={number}
+            active={active}
+            onClick={() => {
+              handleClick(number);
+            }}
+          >
+            {number}
           </Li>
         ))}
       </Ul>
@@ -25,19 +39,22 @@ const Pagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
 
 export default Pagination;
 const Ul = styled.ul`
-display: inline-block;
-list-style-type: none;
-cursor: pointer;
-`
-const Li = styled.li`
+  display: inline-block;
+  list-style-type: none;
+  cursor: pointer;
+`;
+interface ListProps {
+  active: boolean;
+}
+const Li = styled.li<ListProps>`
   float: left;
   padding: 8px 16px;
   text-decoration: none;
   &.active {
     background-color: red;
   }
-`
+`;
 const Nav = styled.nav`
-display: flex;
-justify-content: center;
-`
+  display: flex;
+  justify-content: center;
+`;

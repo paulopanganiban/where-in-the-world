@@ -6,7 +6,7 @@ interface Props {
   searchTerm:  string | ReadonlyArray<string> | number | undefined;
   searchKeyWord: (value: string) => void;
 }
-const SearchInput = ({ searchTerm, searchKeyWord }: Props) => {
+const SearchInput = ({ searchTerm, searchKeyWord }: any) => {
   const inputElement = useRef<HTMLInputElement>(null);
   const getSearchTerm = (e: React.FormEvent<HTMLInputElement>) => {
     const element = e.currentTarget as HTMLInputElement;
