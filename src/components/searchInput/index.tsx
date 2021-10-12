@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 interface Props {
   term: string;
-  searchTerm:  string | ReadonlyArray<string> | number | undefined;
+  searchTerm: string | ReadonlyArray<string> | number | undefined;
   searchKeyWord: (value: string) => void;
 }
 const SearchInput = ({ searchTerm, searchKeyWord }: any) => {
@@ -18,7 +19,13 @@ const SearchInput = ({ searchTerm, searchKeyWord }: any) => {
   return (
     <SearchInputContainer>
       <StyledForm>
-        <StyledSearchIcon />
+        <IconWrapper>
+        {searchTerm !== "" ? <CloseIcon 
+        style={{color: 'red'}}
+        onClick={() => {searchKeyWord("")}}
+        /> : <SearchIcon />}
+        </IconWrapper>
+
         <StyledInput
           ref={inputElement}
           type="text"
@@ -32,8 +39,13 @@ const SearchInput = ({ searchTerm, searchKeyWord }: any) => {
 };
 
 export default SearchInput;
-const StyledSearchIcon = styled(SearchIcon)`
+const IconWrapper = styled.span`
+transition: all 0.2s ease-in-out;
+height: 100%;
   margin-left: 32px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 `;
 const SearchInputContainer = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
