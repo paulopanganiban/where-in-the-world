@@ -46,7 +46,7 @@ interface ListProps {
   active: boolean;
 }
 const Li = styled.li<ListProps>`
-  float: left;
+  /* float: left; */
   padding: 8px 16px;
   text-decoration: none;
   > button {
