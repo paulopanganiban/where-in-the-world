@@ -21,15 +21,14 @@ const Pagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
     <Nav>
       <Ul>
         {pageNumbers.map((number) => (
-          <Li
-          ref={listElement}
-            key={number}
-            active={active}
-            onClick={() => {
-              handleClick(number);
-            }}
-          >
-            {number}
+          <Li ref={listElement} key={number} active={active}>
+            <button
+              onClick={() => {
+                handleClick(number);
+              }}
+            >
+              {number}
+            </button>
           </Li>
         ))}
       </Ul>
@@ -50,8 +49,19 @@ const Li = styled.li<ListProps>`
   float: left;
   padding: 8px 16px;
   text-decoration: none;
-  &.active {
-    background-color: red;
+  > button {
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-decoration: none;
+    :focus {
+      color: red;
+      font-size: 22px;
+    }
   }
 `;
 const Nav = styled.nav`

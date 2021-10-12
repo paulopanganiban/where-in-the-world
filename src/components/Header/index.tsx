@@ -32,9 +32,10 @@ const Header = ({ title, theme, toggleTheme, themeMode }: Props) => {
 export default Header;
 const StyledH1 = styled.h1`
 cursor: pointer;
-margin-left: 80px;
+margin-left: 100px;
 @media all and (max-width: 375px) { 
-  margin-left: 10px;
+  font-size: 1.5rem;
+  margin-left: 15px;
 }
 `
 const HeaderContainer = styled.nav`

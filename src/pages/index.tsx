@@ -43,6 +43,7 @@ export interface Props {
 }
 const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
+  const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
@@ -80,8 +81,11 @@ const Home: NextPage<Props> = ({ data }) => {
             searchKeyWord={searchKeyWordHandler}
             searchTerm={searchTerm}
           />
-          <FilterDropDown title={"Filter by Region"} iconSize={"small"}
-          searchKeyWord={searchKeyWordHandler}
+          <FilterDropDown
+            regions={regions}
+            title={"Filter by Region"}
+            iconSize={"small"}
+            searchKeyWord={searchKeyWordHandler}
           />
         </TopMainContainer>
         <BottomMainContainer>
@@ -93,14 +97,14 @@ const Home: NextPage<Props> = ({ data }) => {
           )}
         </BottomMainContainer>
       </MainWrapper>
-      {
-        !searchTerm && (<Pagination
+      {!searchTerm && (
+        <Pagination
           itemsPerPage={itemsPerPage}
           totalItems={fetchedData.length}
           // totalItems={searchTerm.length < 1 ? fetchedData.length : searchResults.length}
           paginate={paginate}
-        />)
-      }
+        />
+      )}
     </MainContainer>
   );
 };
@@ -112,6 +116,7 @@ const TopMainContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
 `;
 const MainContainer = styled.div``;
 const MainWrapper = styled.div`
