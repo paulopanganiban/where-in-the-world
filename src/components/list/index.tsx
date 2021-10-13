@@ -2,10 +2,13 @@ import React from "react";
 import { Props } from "../../pages";
 import Card from "../card";
 import styled from 'styled-components'
+
+import { motion } from "framer-motion";
 interface ListProps extends Props {
   noDataFoundText?: string;
 }
 const List = ({ data, noDataFoundText }: ListProps) => {
+  console.log(data[0])
   const renderDataList = data.map(
     (
       { name: { common }, flags: { svg }, population, region, capital, cca3 }
@@ -23,7 +26,9 @@ const List = ({ data, noDataFoundText }: ListProps) => {
   );
 
   return (
-      <ListContainer>
+      <ListContainer
+ 
+      >
         {renderDataList.length > 0 ? (
           renderDataList
         ) : (
@@ -34,8 +39,11 @@ const List = ({ data, noDataFoundText }: ListProps) => {
 };
 
 export default List;
-const ListContainer = styled.ul`
+const ListContainer = styled(motion.ul)`
 max-width: 1440px;
 display: flex;
 flex-wrap: wrap;
-justify-content: center;`
+justify-content: center
+;
+
+`

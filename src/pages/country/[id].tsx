@@ -7,6 +7,8 @@ import { Props } from "..";
 import { useRouter } from "next/router";
 import { arrayToString } from "../../utilities/functions/stringManipulator.function";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
+
+import { motion } from "framer-motion";
 interface CountryProps extends Props {
   noDataFoundText?: string;
 }
@@ -24,7 +26,10 @@ const Country = ({ data }: CountryProps) => {
   console.log(country.borders);
   console.log();
   return (
-    <CountryContainer>
+    <CountryContainer
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    >
       <CountryWrapper>
         <TopContainer>
           <Button
@@ -107,7 +112,6 @@ const Country = ({ data }: CountryProps) => {
                   </Ul>
                 </Content>
               </Wrapper>
-              {/* PROTOTYPING styles */}
               <ListSpan
               >
                 <h4>Border Countries:</h4>
@@ -138,11 +142,13 @@ const Country = ({ data }: CountryProps) => {
 
 export default Country;
 const ListSpan = styled.span`
-  margin: "77px 0 0 0";
   width: "100%";
   display: "flex";
   flex-wrap: "wrap";
   align-items: "center";
+  h4 {
+    margin-top: 77px;
+  }
 `;
 const H4 = styled.h4`
   margin-right: 3px;
@@ -167,16 +173,16 @@ const Wrapper = styled.div`
 const BottomWrapper = styled.div`
   display: flex;
   flex: 1;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 `;
 interface ContentProps {
   right?: boolean;
 }
 const Content = styled.div<ContentProps>`
-  margin-left: ${({ right }) => (right ? "0" : "0")};
+  margin-right: 20px;
 `;
-const CountryContainer = styled.div`
+const CountryContainer = styled(motion.div)`
   display: block;
 `;
 const CountryWrapper = styled.div`
