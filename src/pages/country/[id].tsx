@@ -167,8 +167,8 @@ const Wrapper = styled.div`
 `;
 const BottomWrapper = styled.div`
   display: flex;
-  flex: 1;
-  justify-content: space-evenly;
+  flex: 0.8;
+  justify-content: space-between;
   flex-wrap: wrap;
 `;
 interface ContentProps {
