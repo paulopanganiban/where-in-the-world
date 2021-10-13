@@ -56,7 +56,7 @@ const Country = ({ data }: CountryProps) => {
               <h1>{country.name.common}</h1>
               <Wrapper>
                 <Content>
-                  <Ul>
+                  <ul>
                     <li>
                       <Span>
                         <H4>Native Name:</H4>
@@ -87,10 +87,10 @@ const Country = ({ data }: CountryProps) => {
                         <p>{country.capital}</p>
                       </Span>
                     </li>
-                  </Ul>
+                  </ul>
                 </Content>
                 <Content right={true}>
-                  <Ul>
+                  <ul>
                     <li>
                       <Span>
                         <H4>Top Level Domain:</H4>
@@ -109,7 +109,7 @@ const Country = ({ data }: CountryProps) => {
                         <p>{language}</p>
                       </Span>
                     </li>
-                  </Ul>
+                  </ul>
                 </Content>
               </Wrapper>
               <ListSpan
@@ -149,15 +149,13 @@ const ListSpan = styled.span`
   h4 {
     margin-top: 77px;
   }
+
 `;
 const H4 = styled.h4`
   margin-right: 3px;
 `;
 const ButtonWrapper = styled.span`
   margin: 5px;
-`;
-const Ul = styled.ul`
-  list-style-type: none;
 `;
 const Span = styled.span<{ margin?: string }>`
   display: flex;
@@ -181,6 +179,9 @@ interface ContentProps {
 }
 const Content = styled.div<ContentProps>`
   margin-right: 20px;
+   ul {
+    list-style-type: none;
+  }
 `;
 const CountryContainer = styled(motion.div)`
   display: block;
@@ -207,7 +208,9 @@ const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 625px;
-  
+  > h1 {
+    margin-top: 10px;
+  }
   @media all and (max-width: 1000px) {
   }
 `;
