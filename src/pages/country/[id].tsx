@@ -7,6 +7,8 @@ import { Props } from "..";
 import { useRouter } from "next/router";
 import { arrayToString } from "../../utilities/functions/stringManipulator.function";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
+
+import { motion } from "framer-motion";
 interface CountryProps extends Props {
   noDataFoundText?: string;
 }
@@ -107,7 +109,6 @@ const Country = ({ data }: CountryProps) => {
                   </Ul>
                 </Content>
               </Wrapper>
-              {/* PROTOTYPING styles */}
               <ListSpan
               >
                 <h4>Border Countries:</h4>
@@ -169,14 +170,14 @@ const Wrapper = styled.div`
 const BottomWrapper = styled.div`
   display: flex;
   flex: 1;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 `;
 interface ContentProps {
   right?: boolean;
 }
 const Content = styled.div<ContentProps>`
-  margin-left: ${({ right }) => (right ? "0" : "0")};
+  margin-right: 20px;
 `;
 const CountryContainer = styled.div`
   display: block;

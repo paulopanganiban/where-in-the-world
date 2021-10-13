@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from 'next/image';
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
+import { motion } from 'framer-motion';
 interface Props {
   countryName: string;
   population: number;
@@ -19,7 +20,10 @@ const Card = ({ countryName, population, region, capital, svg, cca3 }: Props) =>
   console.log(cca3)
   return (
     <Link href={`country/${cca3.toLowerCase()}`} passHref>
-      <CardContainer>
+      <CardContainer
+         initial={{opacity: 0}}
+         animate={{opacity: 1}}
+      >
         <Image src={svg} alt={countryName} height={161} width={265} objectFit={'cover'}/>
         <CardContentContainer>
           <Span>{countryName}</Span>
@@ -65,7 +69,7 @@ const Span = styled.span`
   font-weight: 600;
   margin: 25px 0 0 24px;
 `;
-const CardContainer = styled.div`
+const CardContainer = styled(motion.div)`
 overflow: hidden;
 white-space: nowrap;
   margin: 0px 38px 38px 38px;
