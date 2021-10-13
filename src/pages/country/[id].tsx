@@ -22,9 +22,6 @@ const Country = ({ data }: CountryProps) => {
   const language = country.languages
     ? arrayToString(Object.values(country.languages))
     : [];
-  console.log(country);
-  console.log(country.borders);
-  console.log();
   return (
     <CountryContainer
     initial={{opacity: 0}}
@@ -209,7 +206,7 @@ const RightContainer = styled.div`
   flex-direction: column;
   max-width: 625px;
   > h1 {
-    margin-top: 10px;
+    margin-top: 30px;
   }
   @media all and (max-width: 1000px) {
   }

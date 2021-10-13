@@ -17,7 +17,6 @@ interface TextProps {
 }
 const Card = ({ countryName, population, region, capital, svg, cca3 }: Props) => {
   const populationCount: string = getNumberWithCommas(population);
-  console.log(cca3)
   return (
     <Link href={`country/${cca3.toLowerCase()}`} passHref>
       <CardContainer

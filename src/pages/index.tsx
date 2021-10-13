@@ -7,6 +7,7 @@ import FilterDropDown from "../components/filterDropDown";
 import List from "../components/list";
 import BasicPagination from "../components/pagination";
 import Layout from "../components/layout";
+import ScrollToTop from "../components/scrollToTop";
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
 export const getStaticProps = async () => {
   try {
@@ -43,7 +44,6 @@ export interface Props {
 const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
-  console.log(JSON.stringify(fetchedData[0]));
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("");
@@ -106,6 +106,7 @@ const Home: NextPage<Props> = ({ data }) => {
           </>
         )}
       </MainWrapper>
+      <ScrollToTop />
     </MainContainer>
   );
 };
