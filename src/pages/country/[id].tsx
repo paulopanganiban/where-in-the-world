@@ -26,7 +26,10 @@ const Country = ({ data }: CountryProps) => {
   console.log(country.borders);
   console.log();
   return (
-    <CountryContainer>
+    <CountryContainer
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    >
       <CountryWrapper>
         <TopContainer>
           <Button
@@ -179,7 +182,7 @@ interface ContentProps {
 const Content = styled.div<ContentProps>`
   margin-right: 20px;
 `;
-const CountryContainer = styled.div`
+const CountryContainer = styled(motion.div)`
   display: block;
 `;
 const CountryWrapper = styled.div`
