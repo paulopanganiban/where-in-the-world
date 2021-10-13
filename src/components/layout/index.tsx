@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Header from "../header";
+import Header from "../Header";
 import { darkTheme, lightTheme } from "../../styles/themes";
 import { useDarkMode } from "../../utilities/hooks/darkMode";
 import { ThemeProvider } from "styled-components";
