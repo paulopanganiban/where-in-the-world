@@ -44,7 +44,7 @@ export interface Props {
 const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
-
+  console.log(JSON.stringify(fetchedData[0]))
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("");
@@ -65,7 +65,7 @@ const Home: NextPage<Props> = ({ data }) => {
   };
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(12);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = fetchedData.slice(indexOfFirstItem, indexOfLastItem);

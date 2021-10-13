@@ -6,6 +6,7 @@ interface ListProps extends Props {
   noDataFoundText?: string;
 }
 const List = ({ data, noDataFoundText }: ListProps) => {
+  console.log(data[0])
   const renderDataList = data.map(
     (
       { name: { common }, flags: { svg }, population, region, capital, cca3 }

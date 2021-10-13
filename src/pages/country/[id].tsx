@@ -138,11 +138,13 @@ const Country = ({ data }: CountryProps) => {
 
 export default Country;
 const ListSpan = styled.span`
-  margin: "77px 0 0 0";
   width: "100%";
   display: "flex";
   flex-wrap: "wrap";
   align-items: "center";
+  h4 {
+    margin-top: 77px;
+  }
 `;
 const H4 = styled.h4`
   margin-right: 3px;
