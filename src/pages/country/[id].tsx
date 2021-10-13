@@ -37,7 +37,7 @@ const Country = ({ data }: CountryProps) => {
             width={"137px"}
             height={"42px"}
             onClick={() => {
-              router.back();
+              router.push('/');
             }}
           ></Button>
         </TopContainer>
