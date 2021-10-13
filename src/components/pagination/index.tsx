@@ -18,7 +18,7 @@ const BasicPagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
   return (
     <Nav>
       <Stack spacing={2}>
-        <Pagination
+        <StyledPagination
           count={pageNumbers && pageNumbers.length}
           boundaryCount={5}
           color={'primary'}
@@ -30,7 +30,13 @@ const BasicPagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
 };
 
 export default BasicPagination;
-
+const StyledPagination = styled(Pagination)`
+ > ul {
+   & .MuiPaginationItem-root {
+     color: ${({ theme }) => theme.text}
+   }
+ }
+`
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
