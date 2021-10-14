@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import Link from "next/link";
 import Button from "../../components/button";
 import Image from "next/image";
 import { Props } from "..";
 import { useRouter } from "next/router";
 import { arrayToString } from "../../utilities/functions/stringManipulator.function";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
-
-import { motion } from "framer-motion";
+import {
+  BottomContainer,
+  BottomWrapper,
+  ButtonWrapper,
+  Content,
+  CountryContainer,
+  CountryWrapper,
+  H4,
+  LeftContainer,
+  ListSpan,
+  RightContainer,
+  Span,
+  TopContainer,
+  Wrapper,
+} from "../../styles/country/[id].styles";
 interface CountryProps extends Props {
   noDataFoundText?: string;
 }
@@ -23,10 +34,7 @@ const Country = ({ data }: CountryProps) => {
     ? arrayToString(Object.values(country.languages))
     : [];
   return (
-    <CountryContainer
-    initial={{opacity: 0}}
-    animate={{opacity: 1}}
-    >
+    <CountryContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <CountryWrapper>
         <TopContainer>
           <Button
@@ -34,7 +42,7 @@ const Country = ({ data }: CountryProps) => {
             width={"137px"}
             height={"42px"}
             onClick={() => {
-              router.push('/');
+              router.push("/");
             }}
           ></Button>
         </TopContainer>
@@ -109,8 +117,7 @@ const Country = ({ data }: CountryProps) => {
                   </ul>
                 </Content>
               </Wrapper>
-              <ListSpan
-              >
+              <ListSpan>
                 <h4>Border Countries:</h4>
                 {"    "}
                 {country.borders
@@ -138,79 +145,7 @@ const Country = ({ data }: CountryProps) => {
 };
 
 export default Country;
-const ListSpan = styled.span`
-  width: "100%";
-  display: "flex";
-  flex-wrap: "wrap";
-  align-items: "center";
-  h4 {
-    margin-top: 77px;
-  }
 
-`;
-const H4 = styled.h4`
-  margin-right: 3px;
-`;
-const ButtonWrapper = styled.span`
-  margin: 5px;
-`;
-const Span = styled.span<{ margin?: string }>`
-  display: flex;
-  margin: 8px 0;
-  margin: ${({ margin }) => margin};
-`;
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 30px;
-`;
-const BottomWrapper = styled.div`
-  display: flex;
-  flex: 0.8;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
-interface ContentProps {
-  right?: boolean;
-}
-const Content = styled.div<ContentProps>`
-  margin-right: 20px;
-   ul {
-    list-style-type: none;
-  }
-`;
-const CountryContainer = styled(motion.div)`
-  display: block;
-`;
-const CountryWrapper = styled.div`
-  width: 80%;
-  right: 0;
-  margin: 0 auto;
-`;
-const TopContainer = styled.div`
-  height: 112px;
-  display: flex;
-  align-items: center;
-`;
-const BottomContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const LeftContainer = styled.div`
-  max-width: 560px;
-  max-height: 401px;
-`;
-const RightContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 625px;
-  > h1 {
-    margin-top: 30px;
-  }
-  @media all and (max-width: 1000px) {
-  }
-`;
 export const getStaticProps = async (context: { params: { id: string } }) => {
   try {
     const id = context.params.id;

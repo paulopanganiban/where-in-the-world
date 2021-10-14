@@ -1,13 +1,11 @@
 import type { NextPage } from "next";
 
-import React, { useEffect, useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import React, { useState } from "react";
+import styled from "styled-components";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
 import List from "../components/list";
 import BasicPagination from "../components/pagination";
-import Layout from "../components/layout";
-import ScrollToTop from "../components/scrollToTop";
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
 export const getStaticProps = async () => {
   try {
@@ -105,7 +103,6 @@ const Home: NextPage<Props> = ({ data }) => {
           </>
         )}
       </MainWrapper>
-      <ScrollToTop />
     </MainContainer>
   );
 };

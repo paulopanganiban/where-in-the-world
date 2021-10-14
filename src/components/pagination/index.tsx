@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Stack from "@mui/material/Stack";
-import Pagination from "@mui/material/Pagination";
+import { Nav, StyledPagination } from "./pagination.styles";
+
 interface Props {
   itemsPerPage: number;
   paginate: (pageNumber: any) => void;
@@ -30,15 +31,3 @@ const BasicPagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
 };
 
 export default BasicPagination;
-const StyledPagination = styled(Pagination)`
- > ul {
-   & .MuiPaginationItem-root {
-     color: ${({ theme }) => theme.text}
-   }
- }
-`
-const Nav = styled.nav`
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-`;
