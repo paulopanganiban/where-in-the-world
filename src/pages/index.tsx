@@ -69,7 +69,6 @@ const Home: NextPage<Props> = ({ data }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = fetchedData.slice(indexOfFirstItem, indexOfLastItem);
   const paginate = (pageNumber: number) => {
-    console.log(pageNumber);
     setCurrentPage(pageNumber);
   };
   return (
