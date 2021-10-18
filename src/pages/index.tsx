@@ -44,7 +44,6 @@ const Home: NextPage<Props> = ({ data }) => {
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState("");
   const [searchResults, setSearchResults] = useState<any>([]);
   const searchKeyWordHandler = (searchTerm: string) => {
     setSearchTerm(searchTerm);
@@ -97,7 +96,6 @@ const Home: NextPage<Props> = ({ data }) => {
             <BasicPagination
               itemsPerPage={itemsPerPage}
               totalItems={fetchedData.length}
-              // totalItems={searchTerm.length < 1 ? fetchedData.length : searchResults.length}
               paginate={paginate}
             />
           </>

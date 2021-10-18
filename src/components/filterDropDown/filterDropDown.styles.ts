@@ -45,13 +45,11 @@ export const TitleSpan = styled.span`
 `;
 
 export const DropDownContentContainer = styled.div`
-  // we cant style transition to this container with display: none
   opacity: 0;
   left: 0;
   z-index: 10;
   top: calc(100% + 0.75rem);
   position: absolute;
-  /* padding: 0.75rem; */
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }) => theme.background};

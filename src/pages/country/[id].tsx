@@ -5,21 +5,7 @@ import { Props } from "..";
 import { useRouter } from "next/router";
 import { arrayToString } from "../../utilities/functions/stringManipulator.function";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
-import {
-  BottomContainer,
-  BottomWrapper,
-  ButtonWrapper,
-  Content,
-  CountryContainer,
-  CountryWrapper,
-  H4,
-  LeftContainer,
-  ListSpan,
-  RightContainer,
-  Span,
-  TopContainer,
-  Wrapper,
-} from "../../styles/country/[id].styles";
+import  * as S from "../../styles/country/[id].styles";
 interface CountryProps extends Props {
   noDataFoundText?: string;
 }
@@ -34,9 +20,9 @@ const Country = ({ data }: CountryProps) => {
     ? arrayToString(Object.values(country.languages))
     : [];
   return (
-    <CountryContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <CountryWrapper>
-        <TopContainer>
+    <S.CountryContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <S.CountryWrapper>
+        <S.TopContainer>
           <Button
             label={"Back"}
             width={"137px"}
@@ -45,10 +31,10 @@ const Country = ({ data }: CountryProps) => {
               router.push("/");
             }}
           ></Button>
-        </TopContainer>
-        <BottomContainer>
-          <BottomWrapper>
-            <LeftContainer>
+        </S.TopContainer>
+        <S.BottomContainer>
+          <S.BottomWrapper>
+            <S.LeftContainer>
               <Image
                 width={560}
                 height={401}
@@ -56,73 +42,73 @@ const Country = ({ data }: CountryProps) => {
                 alt={country.name.common}
                 objectFit={"cover"}
               />
-            </LeftContainer>
-            <RightContainer>
+            </S.LeftContainer>
+            <S.RightContainer>
               <h1>{country.name.common}</h1>
-              <Wrapper>
-                <Content>
+              <S.Wrapper>
+                <S.Content>
                   <ul>
                     <li>
-                      <Span>
-                        <H4>Native Name:</H4>
+                      <span>
+                        <h4>Native Name:</h4>
                         <p>{country.name.official}</p>
-                      </Span>
+                      </span>
                     </li>
                     <li>
-                      <Span>
-                        <H4>Population:</H4>
+                      <span>
+                        <h4>Population:</h4>
                         <p>{populationCount}</p>
-                      </Span>
+                      </span>
                     </li>
                     <li>
-                      <Span>
-                        <H4>Region:</H4>
+                      <span>
+                        <h4>Region:</h4>
                         <p>{country.region}</p>
-                      </Span>
+                      </span>
                     </li>
                     <li>
-                      <Span>
-                        <H4>Sub Region:</H4>
+                      <span>
+                        <h4>Sub Region:</h4>
                         <p>{country.subregion}</p>
-                      </Span>
+                      </span>
                     </li>
                     <li>
-                      <Span>
-                        <H4>Capital:</H4>
+                      <span>
+                        <h4>Capital:</h4>
                         <p>{country.capital}</p>
-                      </Span>
+                      </span>
                     </li>
                   </ul>
-                </Content>
-                <Content right={true}>
+                </S.Content>
+                <S.Content right={true}>
                   <ul>
                     <li>
-                      <Span>
-                        <H4>Top Level Domain:</H4>
+                      <span>
+                        <h4>Top Level Domain:</h4>
                         <p>{country.tld}</p>
-                      </Span>
+                      </span>
                     </li>
                     <li>
-                      <Span>
-                        <H4>Currencies:</H4>
+                      <span>
+                        <h4>Currencies:</h4>
                         <p>{currency}</p>
-                      </Span>
+                      </span>
                     </li>
                     <li>
-                      <Span>
-                        <H4>Languages:</H4>
+                      <span>
+                        <h4>Languages:</h4>
                         <p>{language}</p>
-                      </Span>
+                      </span>
                     </li>
                   </ul>
-                </Content>
-              </Wrapper>
-              <ListSpan>
+                </S.Content>
+              </S.Wrapper>
+              <S.ListSpan>
                 <h4>Border Countries:</h4>
                 {"    "}
                 {country.borders
                   ? country.borders.map((item: string) => (
-                      <ButtonWrapper key={item}>
+                      <S.ButtonWrapper key={item}>
                         <Button
                           width={"98px"}
                           height={"30px"}
@@ -132,15 +118,15 @@ const Country = ({ data }: CountryProps) => {
                           label={item}
                           margin={"5px"}
                         />
-                      </ButtonWrapper>
+                      </S.ButtonWrapper>
                     ))
                   : "N/a"}
-              </ListSpan>
-            </RightContainer>
-          </BottomWrapper>
-        </BottomContainer>
-      </CountryWrapper>
-    </CountryContainer>
+              </S.ListSpan>
+            </S.RightContainer>
+          </S.BottomWrapper>
+        </S.BottomContainer>
+      </S.CountryWrapper>
+    </S.CountryContainer>
   );
 };
 
