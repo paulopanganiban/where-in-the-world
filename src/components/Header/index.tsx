@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import DarkModeButton from "../darkMode/darkModeButton";
 import DarkModeIcon from "../darkMode/darkModeIcon";
-import { HeaderContainer, StyledH1, DarkModeContainer } from "./header.styles";
+import * as S from "./header.styles";
 interface Props {
   title: string;
   theme: string | boolean | (() => void);
@@ -11,19 +11,19 @@ interface Props {
 }
 const Header = ({ title, theme, toggleTheme, themeMode }: Props) => {
   return (
-    <HeaderContainer>
+    <S.HeaderContainer>
       <Link href="/" passHref>
-        <StyledH1>{title}</StyledH1>
+        <S.StyledH1>{title}</S.StyledH1>
       </Link>
-      <DarkModeContainer>
+      <S.DarkModeContainer>
         <DarkModeIcon theme={theme} width={12} height={12} />
         <DarkModeButton
           buttonLabel={"Dark Mode"}
           themeMode={themeMode}
           toggleTheme={toggleTheme}
         />
-      </DarkModeContainer>
-    </HeaderContainer>
+      </S.DarkModeContainer>
+    </S.HeaderContainer>
   );
 };
 
