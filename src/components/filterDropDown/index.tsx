@@ -1,11 +1,5 @@
 import React from "react";
-import Button from "../button";
-import {
-  FilterDropDownContainer,
-  TitleSpan,
-  StyledExpandMoreIcon,
-  DropDownContentContainer,
-} from "./filterDropDown.styles";
+import  * as S from "./filterDropDown.styles";
 interface Props {
   searchKeyWord: (searchTerm: string) => void;
   title: string;
@@ -17,14 +11,14 @@ const FilterDropDown = ({ title, iconSize, searchKeyWord, regions }: Props) => {
     searchKeyWord(region);
   };
   return (
-    <FilterDropDownContainer>
-      <Button>
+    <S.FilterDropDownContainer>
+      <S.Button>
         <div>
-          <TitleSpan>{title}</TitleSpan>
-          <StyledExpandMoreIcon fontSize={iconSize} />
+          <S.TitleSpan>{title}</S.TitleSpan>
+          <S.StyledExpandMoreIcon fontSize={iconSize} />
         </div>
 
-        <DropDownContentContainer>
+        <S.DropDownContentContainer>
           <span>
             <ul>
               {regions.map((region) => (
@@ -38,9 +32,9 @@ const FilterDropDown = ({ title, iconSize, searchKeyWord, regions }: Props) => {
               ))}
             </ul>
           </span>
-        </DropDownContentContainer>
-      </Button>
-    </FilterDropDownContainer>
+        </S.DropDownContentContainer>
+      </S.Button>
+    </S.FilterDropDownContainer>
   );
 };
 
