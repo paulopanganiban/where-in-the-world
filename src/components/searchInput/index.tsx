@@ -1,7 +1,7 @@
 import React, {  useRef } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-import { SearchInputContainer, StyledForm, IconWrapper, StyledInput } from "./searchInput.styles";
+import * as S from "./searchInput.styles";
 interface Props {
   term: string;
   searchTerm: string | ReadonlyArray<string> | number | undefined;
@@ -15,24 +15,24 @@ const SearchInput = ({ searchTerm, searchKeyWord }: any) => {
     searchKeyWord(value);
   };
   return (
-    <SearchInputContainer>
-      <StyledForm>
-        <IconWrapper>
+    <S.SearchInputContainer>
+      <S.StyledForm>
+        <S.IconWrapper>
         {searchTerm !== "" ? <CloseIcon 
         style={{color: 'red'}}
         onClick={() => {searchKeyWord("")}}
         /> : <SearchIcon />}
-        </IconWrapper>
+        </S.IconWrapper>
 
-        <StyledInput
+        <S.StyledInput
           ref={inputElement}
           type="text"
           placeholder="Search for a country..."
           value={searchTerm}
           onChange={getSearchTerm}
         />
-      </StyledForm>
-    </SearchInputContainer>
+      </S.StyledForm>
+    </S.SearchInputContainer>
   );
 };
 

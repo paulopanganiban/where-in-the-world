@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Stack from "@mui/material/Stack";
 import { Nav, StyledPagination } from "./pagination.styles";
 
