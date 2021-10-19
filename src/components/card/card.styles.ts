@@ -32,12 +32,9 @@ export const CardContentContainer = styled.div`
     margin: 25px 0 0 24px;
     width: 200px;
    }
-   p {
-    margin: 0 4px 0 0;
+     p {
+    margin: 4px 4px 0 0;
     font-size: 14px;
     font-style: normal;
-   }
-   .text__container > span {
-    margin: 0 4px 14px 0;
    }
 `;
