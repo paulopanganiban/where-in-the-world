@@ -34,15 +34,15 @@ const Card = ({
         <S.CardContentContainer>
           <span className="countryName">{countryName}</span>
           <span className="text__container">
-            <span>
-              <p>Population: {populationCount}</p>
-            </span>
-            <span>
-              <p>Region: {region}</p>
-            </span>
-            <span>
-              <p>Capital: {capital ? capital[0] : "N/a"}</p>
-            </span>
+            <p>
+              <strong>Population:</strong> {populationCount}
+            </p>
+            <p>
+              <strong>Region:</strong> {region}
+            </p>
+            <p>
+              <strong>Capital:</strong> {capital ? capital[0] : "N/a"}
+            </p>
           </span>
         </S.CardContentContainer>
       </S.CardContainer>
