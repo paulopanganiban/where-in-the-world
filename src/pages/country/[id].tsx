@@ -49,56 +49,56 @@ const Country = ({ data }: CountryProps) => {
                 <S.Content>
                   <ul>
                     <li>
-                      <span>
+                      <S.Span>
                         <h4>Native Name:</h4>
                         <p>{country.name.official}</p>
-                      </span>
+                      </S.Span>
                     </li>
                     <li>
-                      <span>
+                      <S.Span>
                         <h4>Population:</h4>
                         <p>{populationCount}</p>
-                      </span>
+                      </S.Span>
                     </li>
                     <li>
-                      <span>
+                      <S.Span>
                         <h4>Region:</h4>
                         <p>{country.region}</p>
-                      </span>
+                      </S.Span>
                     </li>
                     <li>
-                      <span>
+                      <S.Span>
                         <h4>Sub Region:</h4>
                         <p>{country.subregion}</p>
-                      </span>
+                      </S.Span>
                     </li>
                     <li>
-                      <span>
+                      <S.Span>
                         <h4>Capital:</h4>
                         <p>{country.capital}</p>
-                      </span>
+                      </S.Span>
                     </li>
                   </ul>
                 </S.Content>
                 <S.Content right={true}>
                   <ul>
                     <li>
-                      <span>
+                      <S.Span>
                         <h4>Top Level Domain:</h4>
                         <p>{country.tld}</p>
-                      </span>
+                      </S.Span>
                     </li>
                     <li>
-                      <span>
+                      <S.Span>
                         <h4>Currencies:</h4>
                         <p>{currency}</p>
-                      </span>
+                      </S.Span>
                     </li>
                     <li>
-                      <span>
+                      <S.Span>
                         <h4>Languages:</h4>
                         <p>{language}</p>
-                      </span>
+                      </S.Span>
                     </li>
                   </ul>
                 </S.Content>
