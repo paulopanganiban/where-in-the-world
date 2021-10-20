@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
   }
 };
 
-const Home: NextPage<{data: CountryInterface[]}> = ({ data }) => {
+const Home = ({ data }: {data: CountryInterface[]}) => {
   const [fetchedData] = useState(data);
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
   // Search Keyword State

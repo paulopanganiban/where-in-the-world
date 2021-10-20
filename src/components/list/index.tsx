@@ -1,14 +1,15 @@
-import React, { FC } from "react";
+import React from "react";
 import { CountryInterface } from "../../types/interfaces";
+// import { Props } from "../../pages";
 import Card from "../card";
 import { ListContainer } from "./list.styles";
 
-type Props = {
+interface ListProps {
   data: CountryInterface[]
-  noDataFoundText: string
+  noDataFoundText?: string;
 }
 
-const List: FC<Props> = ({data, noDataFoundText}) => {
+const List = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
     ({
       name: { common },

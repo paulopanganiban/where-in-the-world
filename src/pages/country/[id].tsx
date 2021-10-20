@@ -12,7 +12,7 @@ type Props = {
   noDataFoundText?: string;
 }
 
-const Country: FC<Props> = ({data}) => {
+const Country = ({data}: Props) => {
   const router = useRouter();
   const country = data[0];
   const populationCount: string = getNumberWithCommas(country.population);
