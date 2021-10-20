@@ -7,6 +7,9 @@ import FilterDropDown from "../components/filterDropDown";
 import List from "../components/list";
 import BasicPagination from "../components/pagination";
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
+
+import { CountryInterface } from "../types/interfaces";
+
 export const getStaticProps = async () => {
   try {
     const res = await fetch(defaultEndpoint);
@@ -16,30 +19,8 @@ export const getStaticProps = async () => {
     console.log(err);
   }
 };
-export interface Props {
-  data: [
-    {
-      name: {
-        common: string;
-        official: string;
-        nativeName?: {};
-      };
-      population: number;
-      region: string;
-      subregion: string;
-      capital: [];
-      currencies: {};
-      languages: {};
-      tld: [];
-      borders: [];
-      flags: {
-        svg: string;
-      };
-      cca3: string;
-    }
-  ];
-}
-const Home: NextPage<Props> = ({ data }) => {
+
+const Home: NextPage<{data: CountryInterface[]}> = ({ data }) => {
   const [fetchedData] = useState(data);
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
   // Search Keyword State
@@ -68,6 +49,7 @@ const Home: NextPage<Props> = ({ data }) => {
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+  
   return (
     <MainContainer>
       <MainWrapper>

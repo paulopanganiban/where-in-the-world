@@ -1,15 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import Button from "../../components/button";
 import Image from "next/image";
-import { Props } from "..";
 import { useRouter } from "next/router";
 import { arrayToString } from "../../utilities/functions/stringManipulator.function";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
-import  * as S from "../../styles/country/[id].styles";
-interface CountryProps extends Props {
+import { CountryInterface } from '../../types/interfaces'
+import * as S from "../../styles/country/[id].styles";
+
+type Props = {
+  data: CountryInterface[]
   noDataFoundText?: string;
 }
-const Country = ({ data }: CountryProps) => {
+
+const Country: FC<Props> = ({data}) => {
   const router = useRouter();
   const country = data[0];
   const populationCount: string = getNumberWithCommas(country.population);
