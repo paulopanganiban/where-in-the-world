@@ -16,6 +16,9 @@ export const getStaticProps = async () => {
     console.log(err);
   }
 };
+
+const ey = 'asdfsda'
+
 export interface Props {
   data: [
     {
