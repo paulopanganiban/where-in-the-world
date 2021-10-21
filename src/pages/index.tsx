@@ -16,6 +16,11 @@ export const getStaticProps = async () => {
     console.log(err);
   }
 };
+
+console.log('asdfasd')
+console.log('asdfasd')
+console.log('asdfasd')
+
 export interface Props {
   data: [
     {
