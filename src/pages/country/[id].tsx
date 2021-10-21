@@ -1,8 +1,7 @@
-import React, { FC } from "react";
+import React from "react";
 import Button from "../../components/button";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { arrayToString } from "../../utilities/functions/stringManipulator.function";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
 import { CountryInterface } from '../../types/interfaces'
 import * as S from "../../styles/country/[id].styles";
@@ -13,15 +12,13 @@ type Props = {
 }
 
 const Country = ({data}: Props) => {
+
   const router = useRouter();
   const country = data[0];
   const populationCount: string = getNumberWithCommas(country.population);
-  const currency = country.currencies
-    ? [Object.keys(country?.currencies)[0]]
-    : [];
-  const language = country.languages
-    ? arrayToString(Object.values(country.languages))
-    : [];
+  const currency = Object.keys(country?.currencies).join(', ')
+  const language = Object.values(country.languages).join(', ')
+
   return (
     <S.CountryContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <S.CountryWrapper>
@@ -156,6 +153,7 @@ export const getStaticPaths = async () => {
       params: { id: cca2.toLowerCase() },
     };
   });
+  
   return {
     paths,
     fallback: false,
