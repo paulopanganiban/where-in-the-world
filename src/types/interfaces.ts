@@ -1,19 +1,19 @@
 export interface CountryInterface {
-  name: {
+  name?: {
     common: string;
     official: string;
     nativeName?: {};
   };
   population: number;
   region: string;
-  subregion: string;
-  capital: [];
-  currencies: {};
-  languages: {};
-  tld: [];
-  borders: [];
+  subregion?: string;
+  capital: string[];
+  currencies?: {};
+  languages?: {};
+  tld?: string[];
+  borders?: string[];
   flags: {
     svg: string;
   };
-  cca3: string;
+  cca3?: string;
 }
