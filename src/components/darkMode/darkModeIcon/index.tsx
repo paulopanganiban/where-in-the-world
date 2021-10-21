@@ -1,10 +1,12 @@
 import React from "react";
 import Image from "next/image";
+
 interface Props {
   theme: string | boolean | (() => void);
   width: number;
   height: number;
 }
+
 const DarkModeIcon = ({ theme, width, height }: Props) => {
   return (
     <div>
