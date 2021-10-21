@@ -44,6 +44,7 @@ const Home: NextPage<Props> = ({ data }) => {
   const [fetchedData] = useState(data);
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
+  console.log('yawa')
   const [searchResults, setSearchResults] = useState<any>([]);
   const searchKeyWordHandler = (searchTerm: string) => {
     setSearchTerm(searchTerm);
