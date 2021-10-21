@@ -39,8 +39,9 @@ export interface Props {
     }
   ];
 }
-const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
+
 const Home: NextPage<Props> = ({ data }) => {
+  const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
   const [fetchedData] = useState(data);
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
