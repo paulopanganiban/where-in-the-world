@@ -44,6 +44,7 @@ const Home: NextPage<Props> = ({ data }) => {
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
   const [fetchedData] = useState(data);
   // Search Keyword State
+  const yawa = 'asdfjasdkfhsafkjsadhfkhsadjkfhkjsdf'
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<any>([]);
   const searchKeyWordHandler = (searchTerm: string) => {
