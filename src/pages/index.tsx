@@ -1,12 +1,12 @@
-import type { NextPage } from "next";
-
 import React, { useState } from "react";
 import styled from "styled-components";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
 import List from "../components/list";
 import BasicPagination from "../components/pagination";
+import { CountryInterface } from "../types/interfaces";
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
+
 export const getStaticProps = async () => {
   try {
     const res = await fetch(defaultEndpoint);
@@ -16,31 +16,9 @@ export const getStaticProps = async () => {
     console.log(err);
   }
 };
-export interface Props {
-  data: [
-    {
-      name: {
-        common: string;
-        official: string;
-        nativeName?: {};
-      };
-      population: number;
-      region: string;
-      subregion: string;
-      capital: [];
-      currencies: {};
-      languages: {};
-      tld: [];
-      borders: [];
-      flags: {
-        svg: string;
-      };
-      cca3: string;
-    }
-  ];
-}
+
 const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
-const Home: NextPage<Props> = ({ data }) => {
+const Home = ({ data }: { data: CountryInterface[] }) => {
   const [fetchedData] = useState(data);
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");

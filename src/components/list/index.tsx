@@ -1,10 +1,13 @@
 import React from "react";
-import { Props } from "../../pages";
 import Card from "../card";
+import { CountryInterface } from "../../types/interfaces";
 import { ListContainer } from "./list.styles";
-interface ListProps extends Props {
+
+interface ListProps {
+  data: CountryInterface[]
   noDataFoundText?: string;
 }
+
 const List = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
     ({
