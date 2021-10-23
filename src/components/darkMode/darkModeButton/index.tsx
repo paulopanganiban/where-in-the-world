@@ -1,24 +1,19 @@
 import React from "react";
-import styled from "styled-components";
-const DarkModeButton = ({ theme, toggleTheme, buttonLabel }: any) => {
+import { DefaultTheme } from "styled-components";
+import { Button } from "../darkModeButton.styles";
+
+type Props = {
+  theme: DefaultTheme
+  toggleTheme: () => void
+  buttonLabel: string
+}
+
+const DarkModeButton = ({ theme, toggleTheme, buttonLabel }: Props) => {
   return (
     <Button theme={theme} onClick={toggleTheme}>
-   <p>{buttonLabel}</p>
+      <p>{buttonLabel}</p>
     </Button>
   );
 };
+
 export default DarkModeButton;
-const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: Transparent;
-  background-repeat: no-repeat;
-  border: none;
-  color: ${({ theme }) => theme.text};
-  cursor: pointer;
-  font-size: 0.8rem;
-  padding: 0.6rem;
-  text-align: center;
-  font-weight: bold;
-`;
