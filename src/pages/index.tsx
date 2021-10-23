@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
 import List from "../components/list";
 import BasicPagination from "../components/pagination";
 import { CountryInterface } from "../types/interfaces";
+<<<<<<< HEAD
+=======
+import * as S from "../styles/index.styles";
+>>>>>>> 9aea8cd (refactor the logic of search and filter)
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
 
 export const getStaticProps = async () => {
@@ -18,24 +21,22 @@ export const getStaticProps = async () => {
 };
 
 const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
-const Home = ({ data }: { data: CountryInterface[] } ) => {
+const Home = ({ data }: { data: CountryInterface[] }) => {
   const [fetchedData] = useState(data);
   // Search Keyword State
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<any>([]);
-  const searchKeyWordHandler = (searchTerm: string) => {
-    setSearchTerm(searchTerm);
-    if (searchTerm !== "") {
-      const newDataList = data.filter((item) => {
-        return Object.values(item)
-          .join(" ")
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase());
-      });
-      setSearchResults(newDataList);
-    } else {
-      setSearchResults(fetchedData);
+  const [filter, setFilter] = useState("");
+  const filterOrSearch = () => {
+    if (filter) {
+      return fetchedData
+        .filter(
+          (country) => !country.name.common.search(new RegExp(searchTerm, "ig"))
+        )
+        .filter((country) => country.region === filter);
     }
+    return fetchedData.filter(
+      (country) => !country.name.common.search(new RegExp(searchTerm, "ig"))
+    );
   };
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,28 +48,25 @@ const Home = ({ data }: { data: CountryInterface[] } ) => {
     setCurrentPage(pageNumber);
   };
   return (
-    <MainContainer>
-      <MainWrapper>
-        <TopMainContainer>
-          <SearchInput
-            searchKeyWord={searchKeyWordHandler}
-            searchTerm={searchTerm}
-          />
+    <S.MainContainer>
+      <S.MainWrapper>
+        <S.TopMainContainer>
+          <SearchInput searchKeyWord={setSearchTerm} searchTerm={searchTerm} />
           <FilterDropDown
             regions={regions}
             title={"Filter by Region"}
             iconSize={"small"}
-            searchKeyWord={searchKeyWordHandler}
+            searchKeyWord={setFilter}
           />
-        </TopMainContainer>
-        <BottomMainContainer>
+        </S.TopMainContainer>
+        <S.BottomMainContainer>
           {fetchedData && (
             <List
-              data={searchTerm.length < 1 ? currentItems : searchResults}
+              data={searchTerm.length < 1 ? currentItems : filterOrSearch()}
               noDataFoundText={"No Countries Available"}
             />
           )}
-        </BottomMainContainer>
+        </S.BottomMainContainer>
         {!searchTerm && (
           <>
             <BasicPagination
@@ -78,21 +76,9 @@ const Home = ({ data }: { data: CountryInterface[] } ) => {
             />
           </>
         )}
-      </MainWrapper>
-    </MainContainer>
+      </S.MainWrapper>
+    </S.MainContainer>
   );
 };
 
 export default Home;
-const BottomMainContainer = styled.div``;
-const TopMainContainer = styled.div`
-  max-width: 1440px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-const MainContainer = styled.div``;
-const MainWrapper = styled.div`
-  width: 80%;
-  margin: 0 auto;
-`;
