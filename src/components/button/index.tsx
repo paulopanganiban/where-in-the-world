@@ -1,6 +1,15 @@
+import React from "react";
 import { StyledButton } from "./button.styles";
 
-const Button = ({ label, onClick, width, height, margin }: any) => {
+type Props = {
+  label: string
+  onClick: () => void
+  height: string
+  width: string
+  margin?: string
+}
+
+const Button = ({ label, onClick, width, height, margin }: Props) => {
   return (
     <StyledButton
       onClick={onClick}
