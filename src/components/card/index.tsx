@@ -25,18 +25,20 @@ const Card = ({
           objectFit={"cover"}
         />
         <S.CardContentContainer>
-          <span className="countryName">{name.common}</span>
-          <span className="text__container">
-            <p>
+          <S.TitleContainer>
+            <h3> {name.common} </h3>
+          </S.TitleContainer>
+          <S.DetailsContainer>
+            <S.InfoTag>
               <strong>Population:</strong> {populationCount}
-            </p>
-            <p>
+            </S.InfoTag>
+            <S.InfoTag>
               <strong>Region:</strong> {region}
-            </p>
-            <p>
+            </S.InfoTag>
+            <S.InfoTag>
               <strong>Capital:</strong> {capital ? capital[0] : "N/a"}
-            </p>
-          </span>
+            </S.InfoTag>
+          </S.DetailsContainer>
         </S.CardContentContainer>
       </S.CardContainer>
     </Link>

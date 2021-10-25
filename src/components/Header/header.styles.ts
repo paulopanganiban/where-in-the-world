@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledH1 = styled.h1`
   cursor: pointer;
-  margin-left: 100px;
+  margin-left: 70px;
   @media all and (max-width: 375px) { 
     font-size: 1.5rem;
     margin-left: 15px;
@@ -24,7 +24,7 @@ export const HeaderContainer = styled.nav(({theme}) => ({
 export const DarkModeContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 80px;
+  margin-right: 70px;
   @media all and (max-width: 375px) { 
     margin-right: 10px;
   }

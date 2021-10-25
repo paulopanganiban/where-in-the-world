@@ -4,47 +4,41 @@ import { motion } from 'framer-motion'
 export const CardContainer = styled(motion.div)(({theme}) => ({
   overflow: 'hidden',
   whiteSpace: 'nowrap',
-  margin: '0px 38px 38px 38px',
+  margin: '35px',
   backgroundColor: theme.background,
-  width: '265px',
+  width: '250px',
   height: '335px',
   borderRadius: '5px',
   boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
   cursor: 'pointer',
-
-  '.countryName': {
-    textOverflow: 'ellipsis',
-    fontSize: '18px',
-    fontWeight: 600,
-    margin: '25px 0 0 24px',
-    width: '200px'
-  },
-
-  '.text__container': {
-    margin: '25px 0 0 24px',
-    padding: '0'
-  }
+  display: 'flex',
+  flexDirection: 'column'
 }));
 
 export const CardContentContainer = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
-
-  .countryName {
-    text-overflow: ellipsis;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 25px 0 0 24px;
-    width: 200px;
-  }
-
-  p {
-    margin: 0 4px 0 0;
-    font-size: 14px;
-    font-style: normal;
-  }
-
-  .text__container > span {
-    margin: 0 4px 14px 0;
-  }
 `;
+
+export const InfoTag = styled.p(({theme}) => ({
+  color: theme.text,
+  margin: '3px 0',
+  fontSize: '14px'
+}))
+
+export const TitleContainer = styled.div`
+  flex: 1;
+  margin: 0 22px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+`
+
+export const DetailsContainer = styled.div`
+  flex: 1.8;
+  margin: 0 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`
