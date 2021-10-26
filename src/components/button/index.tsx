@@ -6,7 +6,7 @@ type Props = {
   onClick: () => void
   height: string
   width: string
-  margin: string
+  margin?: string
 }
 
 const Button = ({ label, onClick, width, height, margin }: Props) => {
