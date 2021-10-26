@@ -9,11 +9,13 @@ export const TopMainContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0 70px;
 `;
 
-export const MainContainer = styled.div``;
+export const MainContainer = styled.div`
+`;
 
 export const MainWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 `;
