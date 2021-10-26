@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { CountryInterface } from "../../types/interfaces";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
 import * as S from "../../styles/country/[id].styles";
+import { ListItem } from "../../components/countryPage/listItem";
 
 interface CountryProps {
   data: CountryInterface[];
@@ -12,13 +13,12 @@ interface CountryProps {
 }
 
 const Country = ({ data }: CountryProps) => {
-
   const router = useRouter();
   const country = data[0];
   const populationCount: string = getNumberWithCommas(country.population);
   const currency = Object.keys(country?.currencies!).join(", ");
   const language = Object.values(country.languages!).join(", ");
-  
+
   return (
     <S.CountryContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <S.CountryWrapper>
@@ -48,58 +48,21 @@ const Country = ({ data }: CountryProps) => {
               <S.Wrapper>
                 <S.Content>
                   <ul>
-                    <li>
-                      <S.Span>
-                        <h4>Native Name:</h4>
-                        <p>{country.name.official}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Population:</h4>
-                        <p>{populationCount}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Region:</h4>
-                        <p>{country.region}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Sub Region:</h4>
-                        <p>{country.subregion}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Capital:</h4>
-                        <p>{country.capital}</p>
-                      </S.Span>
-                    </li>
+                    <ListItem name="Native Name" data={country.name.official} />
+                    <ListItem name="Population" data={populationCount} />
+                    <ListItem name="Region" data={country.region} />
+                    <ListItem
+                      name="Sub Region"
+                      data={country.subregion ?? "N/A"}
+                    />
+                    <ListItem name="Capital" data={country.capital} />
                   </ul>
                 </S.Content>
                 <S.Content right={true}>
                   <ul>
-                    <li>
-                      <S.Span>
-                        <h4>Top Level Domain:</h4>
-                        <p>{country.tld}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Currencies:</h4>
-                        <p>{currency}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Languages:</h4>
-                        <p>{language}</p>
-                      </S.Span>
-                    </li>
+                    <ListItem name="Top Level Domain" data={country.tld!} />
+                    <ListItem name="Currencies" data={currency} />
+                    <ListItem name="Languages" data={language} />
                   </ul>
                 </S.Content>
               </S.Wrapper>
@@ -120,7 +83,7 @@ const Country = ({ data }: CountryProps) => {
                         />
                       </S.ButtonWrapper>
                     ))
-                  : "N/a"}
+                  : "N/A"}
               </S.ListSpan>
             </S.RightContainer>
           </S.BottomWrapper>
