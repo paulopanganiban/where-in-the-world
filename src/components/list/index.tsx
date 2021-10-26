@@ -1,16 +1,19 @@
 import React from "react";
-import { Props } from "../../pages";
 import Card from "../card";
+import { CountryInterface } from "../../types/interfaces";
 import { ListContainer } from "./list.styles";
-interface ListProps extends Props {
+
+interface ListProps {
+  data: CountryInterface[]
   noDataFoundText?: string;
 }
+
 const List = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
     ({
-      name: { common },
-      flags: { svg },
-      population,
+      name,
+      flags,
+      population, 
       region,
       capital,
       cca3,
@@ -18,8 +21,8 @@ const List = ({ data, noDataFoundText }: ListProps) => {
       <Card
         key={cca3}
         cca3={cca3}
-        countryName={common}
-        svg={svg}
+        name={name}
+        flags={flags}
         population={population}
         region={region}
         capital={capital}
