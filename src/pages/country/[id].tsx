@@ -1,10 +1,12 @@
 import React from "react";
 import Button from "../../components/button";
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { CountryInterface } from "../../types/interfaces";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
 import * as S from "../../styles/country/[id].styles";
+import { ListItem } from "../../components/countryPage/listItem";
 
 interface CountryProps {
   data: CountryInterface[];
@@ -12,121 +14,91 @@ interface CountryProps {
 }
 
 const Country = ({ data }: CountryProps) => {
-
   const router = useRouter();
   const country = data[0];
   const populationCount: string = getNumberWithCommas(country.population);
   const currency = Object.keys(country?.currencies!).join(", ");
   const language = Object.values(country.languages!).join(", ");
-  
+
   return (
-    <S.CountryContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <S.CountryWrapper>
-        <S.TopContainer>
-          <Button
-            label={"Back"}
-            width={"137px"}
-            height={"42px"}
-            onClick={() => {
-              router.push("/");
-            }}
-          ></Button>
-        </S.TopContainer>
-        <S.BottomContainer>
-          <S.BottomWrapper>
-            <S.LeftContainer>
-              <Image
-                width={560}
-                height={401}
-                src={country.flags.svg}
-                alt={country.name.common}
-                objectFit={"cover"}
-              />
-            </S.LeftContainer>
-            <S.RightContainer>
-              <h1>{country.name.common}</h1>
-              <S.Wrapper>
-                <S.Content>
-                  <ul>
-                    <li>
-                      <S.Span>
-                        <h4>Native Name:</h4>
-                        <p>{country.name.official}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Population:</h4>
-                        <p>{populationCount}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Region:</h4>
-                        <p>{country.region}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Sub Region:</h4>
-                        <p>{country.subregion}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Capital:</h4>
-                        <p>{country.capital}</p>
-                      </S.Span>
-                    </li>
-                  </ul>
-                </S.Content>
-                <S.Content right={true}>
-                  <ul>
-                    <li>
-                      <S.Span>
-                        <h4>Top Level Domain:</h4>
-                        <p>{country.tld}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Currencies:</h4>
-                        <p>{currency}</p>
-                      </S.Span>
-                    </li>
-                    <li>
-                      <S.Span>
-                        <h4>Languages:</h4>
-                        <p>{language}</p>
-                      </S.Span>
-                    </li>
-                  </ul>
-                </S.Content>
-              </S.Wrapper>
-              <S.ListSpan>
-                <h4>Border Countries:</h4>
-                {"    "}
-                {country.borders
-                  ? country.borders.map((item: string) => (
-                      <S.ButtonWrapper key={item}>
-                        <Button
-                          width={"98px"}
-                          height={"30px"}
-                          onClick={() =>
-                            router.push(`/country/${item.toLowerCase()}`)
-                          }
-                          label={item}
-                          margin={"5px"}
-                        />
-                      </S.ButtonWrapper>
-                    ))
-                  : "N/a"}
-              </S.ListSpan>
-            </S.RightContainer>
-          </S.BottomWrapper>
-        </S.BottomContainer>
-      </S.CountryWrapper>
-    </S.CountryContainer>
+    <div>
+      <Head>
+        <title> Country | {data[0].name.official}</title>
+      </Head>
+      <S.CountryContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <S.CountryWrapper>
+          <S.TopContainer>
+            <Button
+              label={"Back"}
+              width={"137px"}
+              height={"42px"}
+              onClick={() => {
+                router.push("/");
+              }}
+            ></Button>
+          </S.TopContainer>
+          <S.BottomContainer>
+            <S.BottomWrapper>
+              <S.LeftContainer>
+                <Image
+                  width={560}
+                  height={401}
+                  src={country.flags.svg}
+                  alt={country.name.common}
+                  objectFit={"cover"}
+                />
+              </S.LeftContainer>
+              <S.RightContainer>
+                <h1>{country.name.common}</h1>
+                <S.Wrapper>
+                  <S.Content>
+                    <ul>
+                      <ListItem
+                        name="Native Name"
+                        data={country.name.official}
+                      />
+                      <ListItem name="Population" data={populationCount} />
+                      <ListItem name="Region" data={country.region} />
+                      <ListItem
+                        name="Sub Region"
+                        data={country.subregion ?? "N/A"}
+                      />
+                      <ListItem name="Capital" data={country.capital} />
+                    </ul>
+                  </S.Content>
+                  <S.Content right={true}>
+                    <ul>
+                      <ListItem name="Top Level Domain" data={country.tld!} />
+                      <ListItem name="Currencies" data={currency} />
+                      <ListItem name="Languages" data={language} />
+                    </ul>
+                  </S.Content>
+                </S.Wrapper>
+                <S.ListSpan>
+                  <h4>Border Countries:</h4>
+                  {"    "}
+                  {country.borders
+                    ? country.borders.map((item: string) => (
+                        <S.ButtonWrapper key={item}>
+                          <Button
+                            width={"98px"}
+                            height={"30px"}
+                            onClick={() =>
+                              router.push(`/country/${item.toLowerCase()}`)
+                            }
+                            label={item}
+                            margin={"5px"}
+                          />
+                        </S.ButtonWrapper>
+                      ))
+                    : "N/A"}
+                </S.ListSpan>
+              </S.RightContainer>
+            </S.BottomWrapper>
+          </S.BottomContainer>
+        </S.CountryWrapper>
+      </S.CountryContainer>
+    </div>
   );
 };
 

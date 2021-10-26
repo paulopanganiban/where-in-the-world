@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchInput from "../components/searchInput";
 import FilterDropDown from "../components/filterDropDown";
+import Head from "next/head";
 import List from "../components/list";
 import BasicPagination from "../components/pagination";
 import { CountryInterface } from "../types/interfaces";
@@ -45,36 +46,44 @@ const Home = ({ data }: { data: CountryInterface[] }) => {
     setCurrentPage(pageNumber);
   };
   return (
-    <S.MainContainer>
-      <S.MainWrapper>
-        <S.TopMainContainer>
-          <SearchInput searchKeyWord={setSearchTerm} searchTerm={searchTerm} />
-          <FilterDropDown
-            regions={regions}
-            title={"Filter by Region"}
-            iconSize={"small"}
-            searchKeyWord={setFilter}
-          />
-        </S.TopMainContainer>
-        <S.BottomMainContainer>
-          {fetchedData && (
-            <List
-              data={searchTerm.length < 1 ? currentItems : filterOrSearch()}
-              noDataFoundText={"No Countries Available"}
+    <div>
+      <Head>
+        <title> Where in the world </title>
+      </Head>
+      <S.MainContainer>
+        <S.MainWrapper>
+          <S.TopMainContainer>
+            <SearchInput
+              searchKeyWord={setSearchTerm}
+              searchTerm={searchTerm}
             />
+            <FilterDropDown
+              regions={regions}
+              title={"Filter by Region"}
+              iconSize={"small"}
+              searchKeyWord={setFilter}
+            />
+          </S.TopMainContainer>
+          <S.BottomMainContainer>
+            {fetchedData && (
+              <List
+                data={searchTerm.length < 1 ? currentItems : filterOrSearch()}
+                noDataFoundText={"No Countries Available"}
+              />
+            )}
+          </S.BottomMainContainer>
+          {!searchTerm && (
+            <>
+              <BasicPagination
+                itemsPerPage={itemsPerPage}
+                totalItems={fetchedData.length}
+                paginate={paginate}
+              />
+            </>
           )}
-        </S.BottomMainContainer>
-        {!searchTerm && (
-          <>
-            <BasicPagination
-              itemsPerPage={itemsPerPage}
-              totalItems={fetchedData.length}
-              paginate={paginate}
-            />
-          </>
-        )}
-      </S.MainWrapper>
-    </S.MainContainer>
+        </S.MainWrapper>
+      </S.MainContainer>
+    </div>
   );
 };
 
