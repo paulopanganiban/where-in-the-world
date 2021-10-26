@@ -4,10 +4,7 @@ import FilterDropDown from "../components/filterDropDown";
 import List from "../components/list";
 import BasicPagination from "../components/pagination";
 import { CountryInterface } from "../types/interfaces";
-<<<<<<< HEAD
-=======
 import * as S from "../styles/index.styles";
->>>>>>> 9aea8cd (refactor the logic of search and filter)
 const defaultEndpoint = "https://restcountries.com/v3.1/all";
 
 export const getStaticProps = async () => {
