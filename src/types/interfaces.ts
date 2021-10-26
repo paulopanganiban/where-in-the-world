@@ -8,8 +8,15 @@ export interface CountryInterface {
   region: string;
   subregion?: string;
   capital: string[];
-  currencies?: {};
-  languages?: {};
+  currencies: {
+    [key: string]: {
+      name: string;
+      symbol: string;
+    };
+  };
+  languages?: {
+    [key: string]: string;
+  };
   tld?: string[];
   borders?: string[];
   flags: {
