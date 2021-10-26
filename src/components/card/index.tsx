@@ -2,37 +2,30 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { numberWithCommas as getNumberWithCommas } from "../../utilities/functions/regex.function";
+import { CountryInterface } from '../../types/interfaces'
 import * as S from "./card.styles";
-interface Props {
-  countryName: string;
-  population: number;
-  region: string;
-  capital: string[];
-  svg: string;
-  cca3: string;
-}
 
 const Card = ({
-  countryName,
+  name,
   population,
   region,
   capital,
-  svg,
+  flags,
   cca3,
-}: Props) => {
+}: CountryInterface) => {
   const populationCount: string = getNumberWithCommas(population);
   return (
     <Link href={`country/${cca3.toLowerCase()}`} passHref>
       <S.CardContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <Image
-          src={svg}
-          alt={countryName}
+          src={flags.svg}
+          alt={name.common}
           height={161}
           width={265}
           objectFit={"cover"}
         />
         <S.CardContentContainer>
-          <span className="countryName">{countryName}</span>
+          <span className="countryName">{name.common}</span>
           <span className="text__container">
             <p>
               <strong>Population:</strong> {populationCount}
