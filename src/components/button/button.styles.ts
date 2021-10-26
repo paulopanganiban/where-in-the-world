@@ -5,14 +5,15 @@ interface StyledButtonProps {
     height?: string;
     margin?: string;
 }
-export const StyledButton = styled.button<StyledButtonProps>`
-    width: ${({ width }) => width};
-    height: ${({ height }) => height};
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
-    margin: ${({ margin }) => margin};
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  `;
+
+export const StyledButton = styled.button<StyledButtonProps>(({width, height, theme, margin}) => ({
+    width,
+    height,
+    backgroundColor: theme.background,
+    color: theme.text,
+    margin,
+    borderRadius: '5px',
+    border: 'none',
+    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
+    cursor: 'pointer'
+}))
