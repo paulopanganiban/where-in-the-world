@@ -1,5 +1,5 @@
-import React from "react";
-import { StyledButton } from "./button.styles";
+import React from 'react'
+import { StyledButton } from './button.styles'
 
 type Props = {
   label: string
@@ -19,7 +19,7 @@ const Button = ({ label, onClick, width, height, margin }: Props) => {
     >
       {label}
     </StyledButton>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

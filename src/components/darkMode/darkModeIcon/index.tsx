@@ -1,16 +1,16 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react'
+import Image from 'next/image'
 
 interface Props {
-  theme: string | boolean | (() => void);
-  width: number;
-  height: number;
+  theme: string | boolean | (() => void)
+  width: number
+  height: number
 }
 
 const DarkModeIcon = ({ theme, width, height }: Props) => {
   return (
     <div>
-      {theme === "light" ? (
+      {theme === 'light' ? (
         <Image
           alt={theme}
           src="/crescent-moon-light.svg"
@@ -20,13 +20,13 @@ const DarkModeIcon = ({ theme, width, height }: Props) => {
       ) : (
         <Image
           src="/crescent-moon-dark.svg"
-          alt={"dark"}
+          alt={'dark'}
           width={width}
           height={height}
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default DarkModeIcon;
+export default DarkModeIcon

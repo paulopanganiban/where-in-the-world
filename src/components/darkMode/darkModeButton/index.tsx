@@ -1,6 +1,6 @@
-import React from "react";
-import { DefaultTheme } from "styled-components";
-import { Button } from "../darkModeButton.styles";
+import React from 'react'
+import { DefaultTheme } from 'styled-components'
+import { Button } from '../darkModeButton.styles'
 
 type Props = {
   theme: DefaultTheme
@@ -13,7 +13,7 @@ const DarkModeButton = ({ theme, toggleTheme, buttonLabel }: Props) => {
     <Button theme={theme} onClick={toggleTheme}>
       <p>{buttonLabel}</p>
     </Button>
-  );
-};
+  )
+}
 
-export default DarkModeButton;
+export default DarkModeButton

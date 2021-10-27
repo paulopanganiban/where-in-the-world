@@ -1,23 +1,16 @@
-import React from "react";
-import Card from "../card";
-import { CountryInterface } from "../../types/interfaces";
-import { ListContainer } from "./list.styles";
+import React from 'react'
+import Card from '../card'
+import { CountryInterface } from '../../types/interfaces'
+import { ListContainer } from './list.styles'
 
 interface ListProps {
   data: CountryInterface[]
-  noDataFoundText?: string;
+  noDataFoundText?: string
 }
 
 const List = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
-    ({
-      name,
-      flags,
-      population, 
-      region,
-      capital,
-      cca3,
-    }) => (
+    ({ name, flags, population, region, capital, cca3, currencies }) => (
       <Card
         key={cca3}
         cca3={cca3}
@@ -26,9 +19,10 @@ const List = ({ data, noDataFoundText }: ListProps) => {
         population={population}
         region={region}
         capital={capital}
+        currencies={currencies}
       />
     )
-  );
+  )
 
   return (
     <ListContainer>
@@ -38,7 +32,7 @@ const List = ({ data, noDataFoundText }: ListProps) => {
         <span>{noDataFoundText}</span>
       )}
     </ListContainer>
-  );
-};
+  )
+}
 
-export default List;
+export default List

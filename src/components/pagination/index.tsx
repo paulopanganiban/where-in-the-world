@@ -1,20 +1,20 @@
-import Stack from "@mui/material/Stack";
-import { Nav, StyledPagination } from "./pagination.styles";
+import Stack from '@mui/material/Stack'
+import { Nav, StyledPagination } from './pagination.styles'
 
 interface Props {
-  itemsPerPage: number;
-  paginate: (pageNumber: any) => void;
-  totalItems: number;
+  itemsPerPage: number
+  paginate: (pageNumber: number) => void
+  totalItems: number
 }
 const BasicPagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
-  const pageNumbers = [];
+  const pageNumbers = []
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
-    pageNumbers.push(i);
+    pageNumbers.push(i)
   }
   const handleClick = (number: number | null) => {
-    if(!number) return;
-    paginate(number);
-  };
+    if (!number) return
+    paginate(number)
+  }
   return (
     <Nav>
       <Stack spacing={2}>
@@ -26,7 +26,7 @@ const BasicPagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
         />
       </Stack>
     </Nav>
-  );
-};
+  )
+}
 
-export default BasicPagination;
+export default BasicPagination

@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledH1 = styled.h1`
   cursor: pointer;
   margin-left: 70px;
-  @media all and (max-width: 375px) { 
+  @media all and (max-width: 375px) {
     font-size: 1.5rem;
     margin-left: 15px;
   }
 `
 
-export const HeaderContainer = styled.nav(({theme}) => ({
+export const HeaderContainer = styled.nav(({ theme }) => ({
   position: 'sticky',
   top: 0,
   zIndex: 20,
@@ -25,7 +25,7 @@ export const DarkModeContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: 70px;
-  @media all and (max-width: 375px) { 
+  @media all and (max-width: 375px) {
     margin-right: 10px;
   }
 `
