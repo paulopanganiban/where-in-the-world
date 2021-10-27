@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import styled, { css } from 'styled-components'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-export const themeCSS = css(({theme}) => ({
+export const themeCSS = css(({ theme }) => ({
   backgroundColor: theme.background,
   color: theme.text
 }))
@@ -24,10 +24,9 @@ export const Button = styled.button`
     align-items: center;
     justify-content: space-between;
   }
+`
 
-`;
-
-export const FilterDropDownContainer = styled.div(({theme}) => ({
+export const FilterDropDownContainer = styled.div(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
   borderRadius: '5px',
@@ -40,13 +39,13 @@ export const FilterDropDownContainer = styled.div(({theme}) => ({
 
 export const StyledExpandMoreIcon = styled(ExpandMoreIcon)`
   margin: 0 20px 0 5px;
-`;
+`
 
 export const TitleSpan = styled.span`
   font-size: 14px;
   margin-left: 25px;
   font-weight: 300;
-`;
+`
 
 export const DropDownContentContainer = styled.div`
   opacity: 0;
@@ -63,7 +62,7 @@ export const DropDownContentContainer = styled.div`
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 
   ${Button}:focus & {
-  opacity: 1;
+    opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
   }
@@ -73,9 +72,8 @@ export const DropDownContentContainer = styled.div`
   }
 
   > span > ul > li {
- 
     text-align: left;
     list-style-type: none;
     padding: 17px 0 16px 25px;
   }
-`;
+`

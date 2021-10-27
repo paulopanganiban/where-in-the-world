@@ -1,15 +1,15 @@
-import React from "react";
-import  * as S from "./filterDropDown.styles";
+import React from 'react'
+import * as S from './filterDropDown.styles'
 interface Props {
-  searchKeyWord: (searchTerm: string) => void;
-  title: string;
-  iconSize: "small" | "inherit" | "medium" | "large" | undefined;
-  regions: string[];
+  searchKeyWord: (searchTerm: string) => void
+  title: string
+  iconSize: 'small' | 'inherit' | 'medium' | 'large' | undefined
+  regions: string[]
 }
 const FilterDropDown = ({ title, iconSize, searchKeyWord, regions }: Props) => {
   const handleClick = (region: string) => {
-    searchKeyWord(region);
-  };
+    searchKeyWord(region)
+  }
   return (
     <S.FilterDropDownContainer>
       <S.Button>
@@ -35,7 +35,7 @@ const FilterDropDown = ({ title, iconSize, searchKeyWord, regions }: Props) => {
         </S.DropDownContentContainer>
       </S.Button>
     </S.FilterDropDownContainer>
-  );
-};
+  )
+}
 
-export default FilterDropDown;
+export default FilterDropDown
