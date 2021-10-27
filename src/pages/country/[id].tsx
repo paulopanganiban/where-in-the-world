@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../components/button'
+// import Button from '../../components/button'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -17,87 +17,65 @@ const Country = ({ data }: CountryProps) => {
   const router = useRouter()
   const country = data[0]
   const populationCount: string = getNumberWithCommas(country.population)
-  const currency = Object.keys(country?.currencies!).join(', ')
-  const language = Object.values(country.languages!).join(', ')
+  const currency = Object.keys(country?.currencies).join(', ')
+  const language = Object.values(country?.languages ?? { 'N/A': 'N/A' }).join(
+    ', '
+  )
 
   return (
     <div>
       <Head>
         <title> Country | {data[0].name.official}</title>
       </Head>
-      <S.CountryContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <S.CountryWrapper>
-          <S.TopContainer>
-            <Button
-              label={'Back'}
-              width={'137px'}
-              height={'42px'}
-              onClick={() => {
-                router.push('/')
-              }}
-            ></Button>
-          </S.TopContainer>
-          <S.BottomContainer>
-            <S.BottomWrapper>
-              <S.LeftContainer>
-                <Image
-                  width={560}
-                  height={401}
-                  src={country.flags.svg}
-                  alt={country.name.common}
-                  objectFit={'cover'}
-                />
-              </S.LeftContainer>
-              <S.RightContainer>
-                <h1>{country.name.common}</h1>
-                <S.Wrapper>
-                  <S.Content>
-                    <ul>
-                      <ListItem
-                        name="Native Name"
-                        data={country.name.official}
-                      />
-                      <ListItem name="Population" data={populationCount} />
-                      <ListItem name="Region" data={country.region} />
-                      <ListItem
-                        name="Sub Region"
-                        data={country.subregion ?? 'N/A'}
-                      />
-                      <ListItem name="Capital" data={country.capital} />
-                    </ul>
-                  </S.Content>
-                  <S.Content right={true}>
-                    <ul>
-                      <ListItem name="Top Level Domain" data={country.tld!} />
-                      <ListItem name="Currencies" data={currency} />
-                      <ListItem name="Languages" data={language} />
-                    </ul>
-                  </S.Content>
-                </S.Wrapper>
-                <S.ListSpan>
-                  <h4>Border Countries:</h4>
-                  {'    '}
-                  {country.borders
-                    ? country.borders.map((item: string) => (
-                        <S.ButtonWrapper key={item}>
-                          <Button
-                            width={'98px'}
-                            height={'30px'}
-                            onClick={() =>
-                              router.push(`/country/${item.toLowerCase()}`)
-                            }
-                            label={item}
-                            margin={'5px'}
-                          />
-                        </S.ButtonWrapper>
-                      ))
-                    : 'N/A'}
-                </S.ListSpan>
-              </S.RightContainer>
-            </S.BottomWrapper>
-          </S.BottomContainer>
-        </S.CountryWrapper>
-      </S.CountryContainer>
+      <S.RootContainer>
+        <S.BackButtonContainer>
+          <S.BackBtn onClick={() => {
+            router.back()
+          }} >
+            Back
+          </S.BackBtn>
+        </S.BackButtonContainer>
+        <S.CountryContainer>
+          <S.CountryImage>
+            <Image
+              width={560}
+              height={401}
+              src={country.flags.svg}
+              alt={country.name.common}
+              layout="intrinsic"
+            />
+          </S.CountryImage>
+          <S.CountryDetailsContainer>
+            <S.TitleContainer>
+              <h1> {country.name.common} </h1>
+            </S.TitleContainer>
+            <S.CountryInfos>
+              <S.LeftContent>
+                <ListItem margin="8px" name="Native Name" data={country.name.official} />
+                <ListItem margin="8px" name="Population" data={populationCount} />
+                <ListItem margin="8px" name="Region" data={country.region} />
+                <ListItem margin="8px" name="Sub Region" data={country.subregion ?? 'N/A'} />
+                <ListItem margin="8px" name="Capital" data={country.capital} />
+              </S.LeftContent>
+              <S.RightContent>
+                <ListItem margin="8px" name="Top Level Domain" data={country?.tld ?? ['N/A']} />
+                <ListItem margin="8px" name="Currencies" data={currency} />
+                <ListItem margin="8px" name="Languages" data={language} />
+              </S.RightContent>
+            </S.CountryInfos>
+            <S.CountryBorders>
+              <h4> Border Countries: </h4>
+              { country.borders?.map(country => {
+                return <S.BorderItem onClick={() => {
+                  router.push(`/country/${country.toLowerCase()}`)
+                }} key={country}>
+                  { country }
+                </S.BorderItem>
+              }) }
+            </S.CountryBorders>
+          </S.CountryDetailsContainer>
+        </S.CountryContainer>
+      </S.RootContainer>
     </div>
   )
 }
