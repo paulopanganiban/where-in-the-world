@@ -17,8 +17,8 @@ const Country = ({ data }: CountryProps) => {
   const router = useRouter()
   const country = data[0]
   const populationCount: string = getNumberWithCommas(country.population)
-  const currency = Object.keys(country?.currencies!).join(', ')
-  const language = Object.values(country.languages!).join(', ')
+  const currency = Object.keys(country?.currencies).join(', ')
+  const language = Object.values(country?.languages ?? { 'N/A': 'N/A' }).join(', ')
 
   return (
     <div>
@@ -68,7 +68,7 @@ const Country = ({ data }: CountryProps) => {
                   </S.Content>
                   <S.Content right={true}>
                     <ul>
-                      <ListItem name="Top Level Domain" data={country.tld!} />
+                      <ListItem name="Top Level Domain" data={country?.tld ?? ['N/A']} />
                       <ListItem name="Currencies" data={currency} />
                       <ListItem name="Languages" data={language} />
                     </ul>
