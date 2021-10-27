@@ -24,7 +24,7 @@ const Layout = ({ children }: Props) => {
       <Header
         title="Where in the world"
         theme={theme}
-        toggleTheme={themeToggler}
+        toggleTheme={themeToggler as () => void}
         themeMode={themeMode}
       />
       <main>{children}</main>

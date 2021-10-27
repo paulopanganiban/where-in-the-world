@@ -6,6 +6,7 @@ interface Props {
   paginate: (pageNumber: number) => void
   totalItems: number
 }
+
 const BasicPagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
   const pageNumbers = []
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {

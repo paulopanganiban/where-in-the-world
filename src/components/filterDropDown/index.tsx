@@ -1,11 +1,13 @@
 import React from 'react'
 import * as S from './filterDropDown.styles'
+
 interface Props {
   searchKeyWord: (searchTerm: string) => void
   title: string
   iconSize: 'small' | 'inherit' | 'medium' | 'large' | undefined
   regions: string[]
 }
+
 const FilterDropDown = ({ title, iconSize, searchKeyWord, regions }: Props) => {
   const handleClick = (region: string) => {
     searchKeyWord(region)

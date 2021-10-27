@@ -4,7 +4,6 @@ import SearchIcon from '@mui/icons-material/Search'
 import * as S from './searchInput.styles'
 
 interface Props {
-  term: string
   searchTerm: string | ReadonlyArray<string> | number | undefined
   searchKeyWord: (value: string) => void
 }
