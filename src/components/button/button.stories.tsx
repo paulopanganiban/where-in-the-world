@@ -1,20 +1,20 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import  Button  from './index';
+import Button from './index'
 
 export default {
   title: 'Example/Button',
-  component: Button,
-} as ComponentMeta<typeof Button>;
+  component: Button
+} as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
-export const Primary = Template.bind({});
+export const Primary = Template.bind({})
 
 Primary.args = {
   primary: true,
   label: 'Button',
   width: '200px',
-  height: '55px',
-};
+  height: '55px'
+}

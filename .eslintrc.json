@@ -1,3 +1,10 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "rules": {
+    // I suggest you add those two rules:
+    "prefer-const": "error"
+  }
 }

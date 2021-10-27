@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-export const CardContainer = styled(motion.div)(({theme}) => ({
+export const CardContainer = styled(motion.div)(({ theme }) => ({
   overflow: 'hidden',
   whiteSpace: 'nowrap',
   margin: '35px',
@@ -13,15 +13,15 @@ export const CardContainer = styled(motion.div)(({theme}) => ({
   cursor: 'pointer',
   display: 'flex',
   flexDirection: 'column'
-}));
+}))
 
 export const CardContentContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-`;
+`
 
-export const InfoTag = styled.p(({theme}) => ({
+export const InfoTag = styled.p(({ theme }) => ({
   color: theme.text,
   margin: '3px 0',
   fontSize: '14px'
