@@ -10,7 +10,7 @@ interface ListProps {
 
 const List = ({ data, noDataFoundText }: ListProps) => {
   const renderDataList = data.map(
-    ({ name, flags, population, region, capital, cca3 }) => (
+    ({ name, flags, population, region, capital, cca3, currencies }) => (
       <Card
         key={cca3}
         cca3={cca3}
@@ -19,6 +19,7 @@ const List = ({ data, noDataFoundText }: ListProps) => {
         population={population}
         region={region}
         capital={capital}
+        currencies={currencies}
       />
     )
   )
