@@ -3,7 +3,7 @@ import { Nav, StyledPagination } from './pagination.styles'
 
 interface Props {
   itemsPerPage: number
-  paginate: (pageNumber: any) => void
+  paginate: (pageNumber: number) => void
   totalItems: number
 }
 const BasicPagination = ({ itemsPerPage, totalItems, paginate }: Props) => {
