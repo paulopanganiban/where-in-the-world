@@ -1,20 +1,22 @@
-import React from "react";
+import React, { ReactChildren } from "react";
 import Head from "next/head";
 import Header from "../Header";
 import { darkTheme, lightTheme } from "../../styles/themes";
 import { useDarkMode } from "../../utilities/hooks/darkMode";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../../styles/global.styles";
+
 interface Props {
   title?: string;
+  children: ReactChildren
 }
-const Layout: React.FC<Props> = ({
-  children,
-  title = "Where in the world?",
-}) => {
+
+const Layout = ({ children, title = "Where in the world?"}: Props) => {
+
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
   if (!mountedComponent) return <div />;
+  
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
