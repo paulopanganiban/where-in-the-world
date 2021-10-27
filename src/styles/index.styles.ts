@@ -10,6 +10,9 @@ export const TopMainContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 70px;
+  @media all and (min-width: 376px) and (max-width: 800px) {
+    margin: 0 30px;
+  }
 `
 
 export const MainContainer = styled.div``
