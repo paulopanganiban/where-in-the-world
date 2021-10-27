@@ -1,5 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
+import lightMoon from '../../../../public/crescent-moon-light.svg'
+import darkMoon from '../../../../public/crescent-moon-dark.svg'
 
 interface Props {
   theme: string | boolean | (() => void)
@@ -10,21 +12,12 @@ interface Props {
 const DarkModeIcon = ({ theme, width, height }: Props) => {
   return (
     <div>
-      {theme === 'light' ? (
-        <Image
-          alt={theme}
-          src="/crescent-moon-light.svg"
-          width={width}
-          height={height}
-        />
-      ) : (
-        <Image
-          src="/crescent-moon-dark.svg"
-          alt={'dark'}
-          width={width}
-          height={height}
-        />
-      )}
+      <Image
+        alt="Icon image"
+        src={theme === 'light' ? lightMoon : darkMoon}
+        width={width}
+        height={height}
+      />
     </div>
   )
 }

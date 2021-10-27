@@ -3,12 +3,15 @@ import Link from 'next/link'
 import DarkModeButton from '../darkMode/darkModeButton'
 import DarkModeIcon from '../darkMode/darkModeIcon'
 import * as S from './header.styles'
+import { DefaultTheme } from 'styled-components'
+
 interface Props {
   title: string
   theme: string | boolean | (() => void)
-  toggleTheme: string | boolean | (() => void)
-  themeMode: { body: string; text: string; background: string }
+  toggleTheme: () => void
+  themeMode: DefaultTheme
 }
+
 const Header = ({ title, theme, toggleTheme, themeMode }: Props) => {
   return (
     <S.HeaderContainer>
@@ -19,8 +22,8 @@ const Header = ({ title, theme, toggleTheme, themeMode }: Props) => {
         <DarkModeIcon theme={theme} width={12} height={12} />
         <DarkModeButton
           buttonLabel={'Dark Mode'}
-          themeMode={themeMode}
           toggleTheme={toggleTheme}
+          theme={themeMode}
         />
       </S.DarkModeContainer>
     </S.HeaderContainer>

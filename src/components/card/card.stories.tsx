@@ -12,10 +12,15 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />
 
 export const country = Template.bind({})
 country.args = {
-  countryName: 'Kuwait',
+  name: {
+    common: 'Kuwait',
+    official: 'State of Kuwait'
+  },
   population: 12345,
   region: 'Asia',
   cca3: 'KWT',
-  svg: 'https://flagcdn.com/kw.svg',
+  flags: {
+    svg: 'https://flagcdn.com/kw.svg'
+  },
   capital: ['Kuwait City']
 }
