@@ -1,18 +1,17 @@
-import React from "react";
+import React from 'react'
 import { Span } from '../../styles/country/[id].styles'
 
 type Props = {
-    name: string
-    data: string | number | string[]
+  name: string
+  data: string | number | string[]
+  margin: string
 }
 
-export const ListItem = ({ name, data } : Props) => {
+export const ListItem = ({ name, data, margin }: Props) => {
   return (
-    <li>
-      <Span>
-        <h4>{name}:</h4>
-        <p>{data}</p>
-      </Span>
-    </li>
-  );
-};
+    <Span margin={margin}>
+      <h4>{name}:{"\u00A0"}</h4>
+      <p>{data}</p>
+    </Span>
+  )
+}
