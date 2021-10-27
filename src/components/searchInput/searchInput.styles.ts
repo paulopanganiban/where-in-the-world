@@ -29,7 +29,7 @@ export const StyledInput = styled.input(({ theme }) => ({
   color: theme.text,
   marginLeft: '30px',
   border: 'none',
-  width: 'inherit',
+  width: '100%',
   backgroundColor: theme.background,
   outline: 'none',
 
